@@ -38,7 +38,7 @@ Once instantiated, the library will read from its internal dataset of available 
 let satGroups = satTracker.satelliteCollections()
 ```
 
-Which will return an array of top-level Satellite groups:
+Which will return an array of top-level Satellite groups:</br>
 
 `
 ▿ 6 elements
@@ -54,7 +54,7 @@ Each of these groups can be further enumerated to get a listing of the names of 
 ```swift
 let subGroups = satTracker.subGroupsForCollection(name:"Communications Satellites")
 ```
-Returns an array of names of the satellite TLE files for this group:
+Returns an array of names of the satellite TLE files for this group:</br>
 
 `
 ▿ 13 elements
