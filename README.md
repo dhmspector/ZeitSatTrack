@@ -15,10 +15,6 @@ _Baseline OS support:_  **Xcode 8.2+, Swift 3.1**; the project targets are confi
 use_frameworks!
 pod 'ZeitSatTrack'
 ```
-**import** ZeitSatTrack into your Swift files 
-```swift
-import ZeitSatTrack
-```
 
 ## Carthage
 TBD
@@ -35,6 +31,12 @@ _ZeitSatTrack_ is provides as a manager class that can operated in one of 2 mode
 
 ## Setup and Initialization
 ## Instantiating
+**import** ZeitSatTrack into your Swift files with
+```swift
+import ZeitSatTrack
+```
+
+then:
 ```swift
 let satTracker = ZeitSatTrackManager.sharedInstance
 ```
@@ -194,7 +196,7 @@ loadSatelliteSubGroup(subgroupName:String, group: String)
 
 # Contributing & Conduct
 
-This project welcomes contributions; all contributions must adhere to the project's [LICENSE](LICENSE). Please do not contribute any code or other resource that are covered by other people's pr organization's copyrights, patents or are otherwise encumbered.  Such contributions will be rejected.
+This project welcomes contributions; all contributions must adhere to the project's [LICENSE](LICENSE). Please do not contribute any code or other resource that are covered by other people's or organization's copyrights, patents or are otherwise encumbered.  Such contributions will be rejected.
 
 This project adheres to the [Contributor Covenant Code of Conduct](CONDUCT). By participating, you are expected to uphold this code. Please report unacceptable behavior to [info@zeitgeist.com](mailto:info@zeitgeist.com).
 
