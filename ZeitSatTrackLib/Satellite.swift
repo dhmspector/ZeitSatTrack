@@ -14,7 +14,7 @@ public struct GeoCoordinates {
     var altitude: Double
     
     public func description() -> String {
-        return "Location (\(self.latitude), \(self.longitude)); Altitude: \(self.altitude)M"
+        return "Location (\(self.latitude), \(self.longitude)); Altitude: \(self.altitude) KM"
     }
 }
 

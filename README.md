@@ -29,7 +29,7 @@ _ZeitSatTrack_ is provides as a manager class that can operated in one of 2 mode
 ## Setup and Initialization
 ## Instantiating
 ```swift
-    let satTracker = ZeitSatTrackManager.sharedInstance
+let satTracker = ZeitSatTrackManager.sharedInstance
 ```
 
 Once instantiated, the library will read from its internal dataset of available source groups.  These can be listed by calling 
@@ -95,10 +95,32 @@ locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>
 
 Which returns an array of dictionaries with location info for all satellites known to the manager.
 
-The `GeoCoordinates` structure is very simple consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date.
+The `GeoCoordinates` structure is very simple consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date:
+
+```swift
+public struct GeoCoordinates {
+    var latitude: CLLocationDegrees
+    var longitude: CLLocationDegrees
+    var altitude: Double
+    
+    public func description() -> String {
+        return "Location (\(self.latitude), \(self.longitude)); Altitude: \(self.altitude) KM"
+    }
+}
+```
 
 
  - *Note:* if a specific date is provided and any given satellite (in either variant of the location call) would not have yet been in orbit (i.e., the specified date is _before the satellite's launch date_) a `nil` will be returned instead of the expected `GeoCoordinates`.
+
+```swift
+let satLoc = satTracker.locationForSatelliteNamed("NOAA 18")
+
+```
+Yields a result similar to:
+```
+NOAA 18: Location (-56.1372936362136, -109.455449551038); Altitude: 870.354212207491 KM
+```
+Where each call 
 
 # Satellite Data Sources
 The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrack.com) run by T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
