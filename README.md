@@ -40,7 +40,8 @@ let satGroups = satTracker.satelliteCollections()
 
 Which will return an array of top-level Satellite groups:</br>
 
-`▿ 6 elements
+`
+▿ 6 elements
   - 0 : "Common Interest"
   - 1 : "Weather & Earth Resources Satellites"
   - 2 : "Communications Satellites"
@@ -55,7 +56,8 @@ let subGroups = satTracker.subGroupsForCollection(name:"Communications Satellite
 ```
 Returns an array of names of the satellite TLE files for this group:</br>
 
-`▿ 13 elements
+`
+▿ 13 elements
   - 0 : "Geostationary"
   - 1 : "Intelsat"
   - 2 : "SES"
