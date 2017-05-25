@@ -158,9 +158,9 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     /**
      * Add a new master source list to the available catalog of satellite collections
      * @param filename - JSON file containing group and TLE dictionaries
-     * @param bindle - the bundle from which this file can be loaded
+     * @param bundle - the bundle from which this file can be loaded
      */
-    open func adddTLESourcesF(fileName:String, bundle: Bundle) {
+    open func adddTLESourcesFromFile(_ fileName:String, bundle: Bundle) {
         let path =  bundle.path(forResource: fileName, ofType: "json")
         if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path!)) {
             let newTLEs = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! Array<Dictionary<String, Any>>

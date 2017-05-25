@@ -184,7 +184,7 @@ The data format for the _ZeitSatTrack_ data source file is a JSON file with an a
 ```
 
 If you wanted to add a new set of TLE groups for use with the library, creating a file such as then adding it at run-time using the method
-` adddTLESourcesF(fileName:String, bundle: Bundle) ` 
+` adddTLESourcesFromFile(_ fileName:String, bundle: Bundle) ` 
 
 which will add all groups in the presented file to the list of available TLE sources. Individual subgroups in your data sources may be added to the available satellites known to the manager by calling:
 ```swift
