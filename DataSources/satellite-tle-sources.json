@@ -1,0 +1,148 @@
+[{
+  "group_name": "Common Interest",
+  "files": [{
+    "name": "Last 30 Days' Launches",
+    "data_file": "https://www.celestrak.com/NORAD/elements/tle-new.txt"
+  }, {
+    "name": "Space Stations",
+    "data_file": "https://www.celestrak.com/NORAD/elements/stations.txt"
+  }, {
+    "name": "100 (or so) Brightest",
+    "data_file": "https://www.celestrak.com/NORAD/elements/visual.txt"
+  }, {
+    "name": "FENGYUN 1C Debris",
+    "data_file": "https://www.celestrak.com/NORAD/elements/1999-025.txt"
+  }, {
+    "name": "IRIDIUM 33 Debris",
+    "data_file": "https://www.celestrak.com/NORAD/elements/iridium-33-debris.txt"
+  }, {
+    "name": "COSMOS 2251 Debris",
+    "data_file": "https://www.celestrak.com/NORAD/elements/cosmos-2251-debris.txt"
+  }, {
+    "name": "BREEZE-M R/B Breakup (2012-044C)",
+    "data_file": "https://www.celestrak.com/NORAD/elements/2012-044.txt"
+  }]
+}, {
+  "group_name": "Weather & Earth Resources Satellites",
+  "files": [{
+    "name": "Weather",
+    "data_file": "https://www.celestrak.com/NORAD/elements/weather.txt"
+  }, {
+    "name": "NOAA",
+    "data_file": "https://www.celestrak.com/NORAD/elements/noaa.txt"
+  }, {
+    "name": "GOES",
+    "data_file": "https://www.celestrak.com/NORAD/elements/goes.txt"
+  }, {
+    "name": "Earth Resources",
+    "data_file": "https://www.celestrak.com/NORAD/elements/resource.txt"
+  }, {
+    "name": "Search & Rescue (SARSAT)",
+    "data_file": "https://www.celestrak.com/NORAD/elements/sarsat.txt"
+  }, {
+    "name": "Disaster Monitoring",
+    "data_file": "https://www.celestrak.com/NORAD/elements/dmc.txt"
+  }, {
+    "name": "Tracking and Data Relay Satellite System (TDRSS)",
+    "data_file": "https://www.celestrak.com/NORAD/elements/tdrss.txt"
+  }, {
+    "name": "ARGOS Data Collection System",
+    "data_file": "https://www.celestrak.com/NORAD/elements/argos.txt"
+  }]
+}, {
+  "group_name": "Communications Satellites",
+  "files": [{
+    "name": "Geostationary",
+    "data_file": "https://www.celestrak.com/NORAD/elements/geo.txt"
+  }, {
+    "name": "Intelsat",
+    "data_file": "https://www.celestrak.com/NORAD/elements/intelsat.txt"
+  }, {
+    "name": "SES",
+    "data_file": "https://www.celestrak.com/NORAD/elements/ses.txt"
+  }, {
+    "name": "Iridium",
+    "data _file": "https://www.celestrak.com/NORAD/elements/iridium.txt"
+  }, {
+    "name": "Iridium NEXT",
+    "data _file": "https://www.celestrak.com/NORAD/elements/iridium-NEXT.txt"
+  }, {
+    "name": "Orbcomm",
+    "data_file": "https://www.celestrak.com/NORAD/elements/orbcomm.txt"
+  }, {
+    "name": "Globalstar",
+    "data_file": "https://www.celestrak.com/NORAD/elements/globalstar.txt"
+  }, {
+    "name": "Amateur Radio",
+    "data_file": "https://www.celestrak.com/NORAD/elements/amateur.txt"
+  }, {
+    "name": "Experimental",
+    "data_file": "https://www.celestrak.com/NORAD/elements/x-comm.txt"
+  }, {
+    "name": "Other Comm",
+    "data_file": "https://www.celestrak.com/NORAD/elements/other-comm.txt"
+  }, {
+    "name": "Gorizont",
+    "data_file": "https://www.celestrak.com/NORAD/elements/gorizont.txt"
+  }, {
+    "name": "Raduga",
+    "data_file": "https://www.celestrak.com/NORAD/elements/raduga.txt"
+  }, {
+    "name": "Molniya",
+    "data_file": "https://www.celestrak.com/NORAD/elements/molniya.txt"
+  }]
+}, {
+  "group_name": "Navigation Satellites",
+  "files": [{
+    "name": "GPS Operational",
+    "data _file": "https://www.celestrak.com/NORAD/elements/gps-ops.txt"
+  }, {
+    "name": "Glonass Operational",
+    "data _file": "https://www.celestrak.com/NORAD/elements/glo-ops.txt"
+  }, {
+    "name": "Galileo",
+    "data _file": "https://www.celestrak.com/NORAD/elements/galileo.txt"
+  }, {
+    "name": "Beidou",
+    "data _file": "https://www.celestrak.com/NORAD/elements/beidou.txt"
+  }, {
+    "name": "Satellite-Based Augmentation System (WAAS/EGNOS/MSAS)",
+    "data_file": "https://www.celestrak.com/NORAD/elements/sbas.txt"
+  }, {
+    "name": "Navy Navigation Satellite System (NNSS)",
+    "data_file": "https://www.celestrak.com/NORAD/elements/nnss.txt"
+  }, {
+    "name": "Russian LEO Navigation",
+    "data_file": "https://www.celestrak.com/NORAD/elements/musson.txt"
+  }]
+}, {
+  "group_name": "Scientific Satellites",
+  "files": [{
+    "name": "Space & Earth Science",
+    "data_file": "https://www.celestrak.com/NORAD/elements/science.txt"
+  }, {
+    "name": "Geodetic",
+    "data_file": "https://www.celestrak.com/NORAD/elements/geodetic.txt"
+  }, {
+    "name": "Engineering",
+    "data_file": "https://www.celestrak.com/NORAD/elements/engineering.txt"
+  }, {
+    "name": "Education",
+    "data_file": "https://www.celestrak.com/NORAD/elements/education.txt"
+  }]
+}, {
+  "group_name": "Miscellaneous Satellites",
+  "files": [{
+    "name": "Miscellaneous Military",
+    "data_file": "https://www.celestrak.com/NORAD/elements/military.txt"
+  }, {
+    "name": "Radar Calibration",
+    "data_file": "https://www.celestrak.com/NORAD/elements/radar.txt"
+  }, {
+    "name": "CubeSats",
+    "data_file": "https://www.celestrak.com/NORAD/elements/cubesat.txt"
+  }, {
+    "name": "Other",
+    "data_file": "https://www.celestrak.com/NORAD/elements/other.txt"
+  }]
+}]

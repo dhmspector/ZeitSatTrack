@@ -1,0 +1,17 @@
+.DS_Store
+*~
+build
+Pods
+\#*
+fastlane/screenshots/
+*.xcuserdatad
+*.xcworkspacedata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+# Carthage
+Carthage/Build
