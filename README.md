@@ -151,7 +151,7 @@ The list includes hundreds of satellites in the following areas:
 - Miscellaneous Satellites
 
 ## Adding to the Default Sources
-The data format for the _ZeitSatTrack_ data source file is a JSON file with an array of group stanzas that contain the names and URLs of TLE files, for example:
+The data format for the _ZeitSatTrack_ data source file is a JSON file with an array of group stanzas  that contain dictionaries with the names and URLs of TLE files, for example:
 
 ```json
 [{
