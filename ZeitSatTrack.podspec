@@ -1,9 +1,10 @@
-spec.name = "ZeitSatTrack"
+Pod::Spec.new do |spec|
+  spec.name = "ZeitSatTrack"
   spec.version = "1.0.0"
-spec.summary = "Satellite Tracking Library."
+  spec.summary = "Satellite Tracking Library."
   spec.homepage = "https://github.com/dhmspector/ZeitSatTrack"
   spec.license = { type: 'Apache 2.0', file: 'LICENSE' }
-  spec.authors = { "David Specgtor" => 'spector@zeitgeist.com' }
+  spec.authors = { "David Spector" => 'spector@zeitgeist.com' }
   spec.social_media_url = "http://twitter.com/dhmspector"
 
   spec.platform = :ios, "10.0"
