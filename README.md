@@ -11,13 +11,15 @@ Note: This library mainly supports for **Xcode 8.2+, Swift 3.1** and embedded fr
 use_frameworks!
 pod 'ZeitSatTrack'
 ```
-Go ahead and **import** ZeitSatTrack into your own Swift files 
+**import** ZeitSatTrack into your Swift files 
 ```swift
 import ZeitSatTrack
 ```
 
 ## Carthage
 ## Directly
+You can either download the _ZeitSatTrack_ git repo as a module, or compile directly and either drag _ZeitSatTrack.framework_ into your project, or add it as a subproject/dependency in Xcode. 
+
 # Usage / API
 
 _ZeitSatTrack_ is provides as a manager class that can operated in one of 2 modes: auto-updating and manual.
