@@ -178,8 +178,8 @@ The data format for the _ZeitSatTrack_ data source file is a JSON file with an a
     "name": "BREEZE-M R/B Breakup (2012-044C)",
     "data_file": "https://www.celestrak.com/NORAD/elements/2012-044.txt"
   }]
-},
-//: ...more stanzas with more groups and specific satellite subgroups...
+}
+
 ]
 ```
 
