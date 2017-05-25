@@ -62,10 +62,10 @@
     "data_file": "https://www.celestrak.com/NORAD/elements/ses.txt"
   }, {
     "name": "Iridium",
-    "data _file": "https://www.celestrak.com/NORAD/elements/iridium.txt"
+    "data_file": "https://www.celestrak.com/NORAD/elements/iridium.txt"
   }, {
     "name": "Iridium NEXT",
-    "data _file": "https://www.celestrak.com/NORAD/elements/iridium-NEXT.txt"
+    "data_file": "https://www.celestrak.com/NORAD/elements/iridium-NEXT.txt"
   }, {
     "name": "Orbcomm",
     "data_file": "https://www.celestrak.com/NORAD/elements/orbcomm.txt"
@@ -95,16 +95,16 @@
   "group_name": "Navigation Satellites",
   "files": [{
     "name": "GPS Operational",
-    "data _file": "https://www.celestrak.com/NORAD/elements/gps-ops.txt"
+    "data_file": "https://www.celestrak.com/NORAD/elements/gps-ops.txt"
   }, {
     "name": "Glonass Operational",
-    "data _file": "https://www.celestrak.com/NORAD/elements/glo-ops.txt"
+    "data_file": "https://www.celestrak.com/NORAD/elements/glo-ops.txt"
   }, {
     "name": "Galileo",
-    "data _file": "https://www.celestrak.com/NORAD/elements/galileo.txt"
+    "data_file": "https://www.celestrak.com/NORAD/elements/galileo.txt"
   }, {
     "name": "Beidou",
-    "data _file": "https://www.celestrak.com/NORAD/elements/beidou.txt"
+    "data_file": "https://www.celestrak.com/NORAD/elements/beidou.txt"
   }, {
     "name": "Satellite-Based Augmentation System (WAAS/EGNOS/MSAS)",
     "data_file": "https://www.celestrak.com/NORAD/elements/sbas.txt"
