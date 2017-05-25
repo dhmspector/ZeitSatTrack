@@ -40,7 +40,7 @@ let satGroups = satTracker.satelliteCollections()
 
 Which will return an array of top-level Satellite groups:</br>
 
-`
+```
 ▿ 6 elements
   - 0 : "Common Interest"
   - 1 : "Weather & Earth Resources Satellites"
@@ -48,7 +48,8 @@ Which will return an array of top-level Satellite groups:</br>
   - 3 : "Navigation Satellites"
   - 4 : "Scientific Satellites"
   - 5 : "Miscellaneous Satellites"
-`
+```
+
 Each of these groups can be further enumerated to get a listing of the names of the TLE files in each group:
 
 ```swift
@@ -56,7 +57,7 @@ let subGroups = satTracker.subGroupsForCollection(name:"Communications Satellite
 ```
 Returns an array of names of the satellite TLE files for this group:</br>
 
-`
+```
 ▿ 13 elements
   - 0 : "Geostationary"
   - 1 : "Intelsat"
@@ -71,7 +72,7 @@ Returns an array of names of the satellite TLE files for this group:</br>
   - 10 : "Gorizont"
   - 11 : "Raduga"
   - 12 : "Molniya"
-`
+```
 
 Lastly, you can add satellite explicitly by providing a string containing TLE data with:
 
