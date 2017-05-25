@@ -86,7 +86,15 @@ Lastly, you can add satellites explicitly by providing a string containing TLE d
 ```swift
 addSatellitesFromTLEData(tleString:String) 
 ```
-Where the string is in the [Two-Line Element format](https://en.wikipedia.org/wiki/Two-line_element_set).  The string can contain one or more TLEs provided they adhere to the format and are separated by newline characters between each TLE entry.
+Where the string is in the [Two-Line Element format](https://en.wikipedia.org/wiki/Two-line_element_set):
+
+```
+ISS (ZARYA)             
+1 25544U 98067A   17144.89781703  .00001573  00000-0  31242-4 0  9992
+2 25544  51.6416 154.3996 0005308 189.3117 243.1127 15.53923882 58131
+
+```
+The string can contain one or more TLEs provided they adhere to the format and are separated by newline characters between each TLE entry.
 
 ## Getting Satellite Positions
 Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, each satellite can be queried to determine its position by calling:
