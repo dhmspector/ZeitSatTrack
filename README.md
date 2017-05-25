@@ -92,7 +92,6 @@ Where the string is in the [Two-Line Element format](https://en.wikipedia.org/wi
 ISS (ZARYA)             
 1 25544U 98067A   17144.89781703  .00001573  00000-0  31242-4 0  9992
 2 25544  51.6416 154.3996 0005308 189.3117 243.1127 15.53923882 58131
-
 ```
 The string can contain one or more TLEs provided they adhere to the format and are separated by newline characters between each TLE entry.
 
