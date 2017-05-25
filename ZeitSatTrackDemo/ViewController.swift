@@ -6,6 +6,7 @@
 //  Copyright © 2017 Zeitgeist. All rights reserved.
 //
 
+import CoreLocation
 import UIKit
 import ZeitSatTrack
 
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
         satTracker.loadSatelliteCollectionForGroup(name: satGroups[2])
         satTracker.loadSatelliteCollectionForGroup(name: satGroups[3])
         
+       satTracker.location = CLLocation(latitude: 37.780129, longitude: -122.392033)
         let subGroups = satTracker.subGroupsForCollection(name:satGroups[2])
         
         let error = satTracker.loadSatelliteSubGroup(subgroupName: "Radar Calibration", group: "Miscellaneous Satellites")

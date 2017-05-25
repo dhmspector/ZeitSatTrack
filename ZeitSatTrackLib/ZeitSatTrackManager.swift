@@ -58,7 +58,8 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     var locationManager:        CLLocationManager?
     var currentState:           ZeitSatTrackStatus = .uninitialized
     var continuousUpdateMode    = true
-    var location:               CLLocationCoordinate2D? // user's current location
+    public var location:        CLLocation? // user's current location
+    public var updateInterval   = TimeInterval(2.0)       // requested update frequency
     var radius:                 CLCircularRegion?
     
     override init() {
@@ -89,6 +90,27 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         }
         return rv
     }
+    
+    /**
+     * For a given named satellite, return orbital components
+     * @param name - the name of the desired satellite
+     * @return a dicitonarty containing the orbital data, or nil if the satellite cannot be found
+     *
+     */
+    
+//    open func orbitalInfoForSatelliteNamed(_ name: String, targetDate: Date? = nil) -> Dictionary<String, String>? {
+//        var rv = Dictionary<String,String>()
+//        if let satellite = self.satellites.filter({ sat in
+//            return sat.name == name
+//        }).first {
+//            rv = satellite.orbitalInfo()
+//        }
+//        return rv
+//    }
+    
+    
+    
+    
     
     /**
      * for all satellites, get  current position or the position at the specifed date-time

@@ -27,21 +27,23 @@ _ZeitSatTrack_ is provides as a manager class that can operated in one of 2 mode
 
 - _Autoupdating mode_ will fire off calls to  _ZeitSatTrackDelegate_ to notify subscribers that satellites of interest have new positions. 
 
-- _Manual mode_ allows the calling application to ask for updates to a specific satellite by name; the value return will be the name of the satellite and a set of GeoCoordinate presenting the position (lat/lon) and altitude of the satellite.  Other info about a specific satellite can be requests of the satellite object  via other convenience APIs listed below.
+- _Manual mode_ allows the calling application to ask for updates to a specific satellite by name (or all known satellites); the values return will be the name of the satellite and a set of GeoCoordinate presenting the position (lat/lon) and altitude of the satellite.  Other info about a specific satellite can be requested of the satellite object via other convenience APIs listed below.
 
 ## Setup and Initialization
 ## Instantiating
 **import** ZeitSatTrack into your Swift files with
+
 ```swift
 import ZeitSatTrack
 ```
 
 then:
+
 ```swift
 let satTracker = ZeitSatTrackManager.sharedInstance
 ```
 
-Once instantiated, the library will read from its internal dataset of available source groups.  These can be listed by calling 
+Once instantiated, the library will read from its internal dataset of available satellite groups.  These can be listed by calling 
 
 ```swift
 let satGroups = satTracker.satelliteCollections()
@@ -83,7 +85,10 @@ Returns an array of names of the satellite TLE files for this group:</br>
   - 12 : "Molniya"
 ```
 
-Lastly, you can add satellites explicitly by providing a string containing TLE data with:
+Most of these listings are self describing, but more details can be found at the [Celestrack](https://www.celestrack.com) site.
+
+
+<br/>Lastly, you can add satellites explicitly by providing a string containing TLE data with:
 
 ```swift
 addSatellitesFromTLEData(tleString:String) 
@@ -96,6 +101,36 @@ ISS (ZARYA)
 2 25544  51.6416 154.3996 0005308 189.3117 243.1127 15.53923882 58131
 ```
 The string provided must adhere to the format and are separated by newline characters between each TLE entry.
+
+## Setting the Location
+If a location is set, additional information about satellites from the perspective of an Earthbound observer can requested.  Location can be set to be fixed point by setting the property directly:
+
+```swift
+satTracker.location = CLLocation(latitude: 37.780129, longitude: -122.392033)
+```
+
+...or by enabling continuous updating using the call:
+
+```swift
+Let status = satTracker.enableContinuousLocationUpdates()
+```
+
+This will return a [CLAuthorizationStatus](https://developer.apple.com/reference/corelocation/clauthorizationstatus) value.
+
+<br/>This feature requires using the CoreLocation manager  which will require both permission of the user in the enclosing location, as well as [Privacy strings describing the use of location info](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18) in the application's _Info.plist_ file.
+
+## Setting the Update Frequency
+_AutoUpdate mode_ includes the ability to set the frequency at which satellite info is updated.  By default the data are updated every _2 seconds_ but a different update frequency by setting the property
+
+```swift
+satTracker.updateInterval
+```
+
+This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.
+
+> See [ZeitSatTrack Delegate](#ZeitSatTrack-Delegate) for more on receiving automatic updates
+
+## Adding Obseerved Satellites
 
 ## Getting Satellite Positions
 Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, each satellite can be queried to determine its position by calling:
@@ -130,13 +165,35 @@ public struct GeoCoordinates {
 
 ```swift
 let satLoc = satTracker.locationForSatelliteNamed("NOAA 18")
-
 ```
 Yields a result similar to:
 ```
 NOAA 18: Location (-56.1372936362136, -109.455449551038); Altitude: 870.354212207491 KM
 ```
-Where each call 
+
+Where each result is a GeoCoordinates structure.
+
+Other information about the orbital status of the satellite can be obtained by calling:
+
+```swift
+let orbitalInfo = satTracker.orbitalInfoForSatelliteNamed("NOAA 18", location: CLLocation(latitude: 37.780129, longitude: -122.392033))
+```
+Which will return a dictionary containing various orbital parameters that could be useful in visualizing the satellite's path, or locating the satellite visually from the ground.
+
+> *Note*: if the `location` parameter is not supplied it is assumed to be available from the `location` property in the _ZeitSatTrack_ manager.  
+
+> If the manager is configured for auto-updating -- which presumes the CoreLocation location access permission has been granted -- then the information returned will be based on the location property as updated periodically by CoreLocation.  If the location property is neither set or provided, this call will return _nil_.
+
+## Continuous Satellite Updates
+
+By default you have to explicitly ask the library to get either an individual update or get updates for all known satellites. 
+
+An additional available mode is auto-updating mode where the manager will fire off a periodic timer to update a list of satellites of interest.
+
+
+### ZeitSatTrack Delegate
+_ZeitSatTrack_ supports a delegate protocol that will automatically deliver information on observed Satellites.
+
 
 # Satellite Data Sources
 The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrack.com) run by T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
