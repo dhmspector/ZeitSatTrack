@@ -6,12 +6,51 @@
 # Usage / API
 _ZeitSatTrack_ is provides as a manager class that can operated in one of several modes:
 # Satellite Data Sources
-The most common source of  two-line (TLE) element files is [Celestrack](https://www.celetrack.com) run by T.S Kelso.  The Celetrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
+The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrack.com) run by T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
 
 _ZeitSatTrack_ provides a consolidated list of these as part of the library resources build right into the library and individual categories and data sets inside those categories can be selected at run time and the current, up to date versions of the TLE files.
 
+The list includes hundreds of satellites in the following areas:
+
+- Common Interest (a selection from the categories below)
+- Weather & Earth Resources Satellites
+- Communications Satellites
+- Navigation Satellites
+- Scientific Satellites
+- Miscellaneous Satellites
+
 ## Adding to the Default Sources
-The data format for _
+The data format for the _ZeitSatTrack_ data source file is a JSON file with an array of group stanzas that contain the names and URLs of TLE files, for example:
+
+```json
+[{
+  "group_name": "Common Interest",
+  "files": [{
+    "name": "Last 30 Days' Launches",
+    "data_file": "https://www.celestrak.com/NORAD/elements/tle-new.txt"
+  }, {
+    "name": "Space Stations",
+    "data_file": "https://www.celestrak.com/NORAD/elements/stations.txt"
+  }, {
+    "name": "100 (or so) Brightest",
+    "data_file": "https://www.celestrak.com/NORAD/elements/visual.txt"
+  }, {
+    "name": "FENGYUN 1C Debris",
+    "data_file": "https://www.celestrak.com/NORAD/elements/1999-025.txt"
+  }, {
+    "name": "IRIDIUM 33 Debris",
+    "data_file": "https://www.celestrak.com/NORAD/elements/iridium-33-debris.txt"
+  }, {
+    "name": "COSMOS 2251 Debris",
+    "data_file": "https://www.celestrak.com/NORAD/elements/cosmos-2251-debris.txt"
+  }, {
+    "name": "BREEZE-M R/B Breakup (2012-044C)",
+    "data_file": "https://www.celestrak.com/NORAD/elements/2012-044.txt"
+  }]
+},
+: ...more stanzas with more groups and specific satellite subgroups...
+]
+```
 
 # Contributing & Conduct
 
