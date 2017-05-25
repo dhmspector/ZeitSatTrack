@@ -3,8 +3,100 @@
 
 # Summary
 # Installation 
+
+Note: This library mainly supports for **Xcode 8.2+, Swift 3.1** and embedded frameworks.
+
+## Cocoapods
+```ruby
+use_frameworks!
+pod 'ZeitSatTrack'
+```
+Go ahead and **import** ZeitSatTrack into your own Swift files 
+```swift
+import ZeitSatTrack
+```
+
+## Carthage
+## Directly
 # Usage / API
-_ZeitSatTrack_ is provides as a manager class that can operated in one of several modes:
+
+_ZeitSatTrack_ is provides as a manager class that can operated in one of 2 modes: auto-updating and manual.
+
+- _Autoupdating mode_ will fire off calls to  _ZeitSatTrackDelegate_ to notify subscribers that satellites of interest have new positions. 
+
+- _Manual mode_ allows the calling application to ask for updates to a specific satellite by name; the value return will be the name of the satellite and a set of GeoCoordinate presenting the position (lat/lon) and altitude of the satellite.  Other info about a specific satellite can be requests of the satellite object  via other convenience APIs listed below.
+
+## Setup and Initialization
+## Instantiating
+```swift
+    let satTracker = ZeitSatTrackManager.sharedInstance
+```
+
+Once instantiated, the library will read from its internal dataset of available source groups.  These can be listed by calling 
+
+```swift
+let satGroups = satTracker.satelliteCollections()
+```
+
+Which will return an array of top-level Satellite groups:
+`
+▿ 6 elements
+  - 0 : "Common Interest"
+  - 1 : "Weather & Earth Resources Satellites"
+  - 2 : "Communications Satellites"
+  - 3 : "Navigation Satellites"
+  - 4 : "Scientific Satellites"
+  - 5 : "Miscellaneous Satellites"
+`
+Each of these groups can be further enumerated to get a listing of the names of the TLE files in each group:
+
+```swift
+let subGroups = satTracker.subGroupsForCollection(name:"Communications Satellites")
+```
+Returns an array of names of the satellite TLE files for this group:
+`
+▿ 13 elements
+  - 0 : "Geostationary"
+  - 1 : "Intelsat"
+  - 2 : "SES"
+  - 3 : "Iridium"
+  - 4 : "Iridium NEXT"
+  - 5 : "Orbcomm"
+  - 6 : "Globalstar"
+  - 7 : "Amateur Radio"
+  - 8 : "Experimental"
+  - 9 : "Other Comm"
+  - 10 : "Gorizont"
+  - 11 : "Raduga"
+  - 12 : "Molniya"
+`
+
+Lastly, you can add satellite explicitly by providing a string containing TLE data with:
+
+```swift
+addSatellitesFromTLEData(tleString:String) 
+```
+Where the string is in the (Two-Line Element format)[https://en.wikipedia.org/wiki/Two-line_element_set].  The string can contain one or more TLEs provided they adhere to the format and are separated by newline characters between each TLE entry.
+
+## Getting Satellite Positions
+Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, each satellite can be queried to determine its position by calling:
+
+```swift
+func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
+```
+Which returns the location for the named satellite, or 
+
+```swift
+locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
+```
+
+Which returns an array of dictionaries with location info for all satellites known to the manager.
+
+The `GeoCoordinates` structure is very simple consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date.
+
+
+ - *Note:* if a specific date is provided and any given satellite (in either variant of the location call) would not have yet been in orbit (i.e., the specified date is _before the satellite's launch date_) a `nil` will be returned instead of the expected `GeoCoordinates`.
+
 # Satellite Data Sources
 The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrack.com) run by T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
 
@@ -53,12 +145,14 @@ The data format for the _ZeitSatTrack_ data source file is a JSON file with an a
 ```
 
 If you wanted to add a new set of TLE groups for use with the library, creating a file such as then adding it at run-time using the method
-```swift  adddTLESourcesF(fileName:String, bundle: Bundle) ``` 
+` adddTLESourcesF(fileName:String, bundle: Bundle) ` 
 
-which will add all groups in the file to the list of available TLE sources. Individual subgroups in your data sources may be added to the available satellites known to the manager by calling:
+which will add all groups in the presented file to the list of available TLE sources. Individual subgroups in your data sources may be added to the available satellites known to the manager by calling:
 ```swift
 loadSatelliteSubGroup(subgroupName:String, group: String)
 ```
+
+
 # Contributing & Conduct
 
 This project welcomes contributions; all contributions must adhere to the project's [LICENSE](LICENSE). Please do not contribute any code or other resource that are covered by other people's pr organization's copyrights, patents or are otherwise encumbered.  Such contributions will be rejected.

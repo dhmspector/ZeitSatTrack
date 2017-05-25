@@ -25,6 +25,9 @@ class ViewController: UIViewController {
         satTracker.loadSatelliteCollectionForGroup(name: satGroups[1])
         satTracker.loadSatelliteCollectionForGroup(name: satGroups[2])
         satTracker.loadSatelliteCollectionForGroup(name: satGroups[3])
+        
+        let subGroups = satTracker.subGroupsForCollection(name:satGroups[2])
+        
         let error = satTracker.loadSatelliteSubGroup(subgroupName: "Radar Calibration", group: "Miscellaneous Satellites")
         print("\(satTracker.stats())")
         //print("Satellite names: \(satTracker.trackedSatsByName())")

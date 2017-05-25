@@ -54,7 +54,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     var tleSources              = Array<Dictionary<String, Any>>()
     var satsInView              = [Satellite]()
     var satellites              = [Satellite]()
-
+    
     var locationManager:        CLLocationManager?
     var currentState:           ZeitSatTrackStatus = .uninitialized
     var continuousUpdateMode    = true
@@ -72,7 +72,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-
+    
     // MARK: Satellite Location API
     
     /**
@@ -154,7 +154,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
             print("Unable to read TLE Source file")
         }
     }
-
+    
     /**
      * Add a new master source list to the available catalog of satellite collections
      * @param filename - JSON file containing group and TLE dictionaries
@@ -169,7 +169,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
             print("Unable to read TLE Source file")
         }
     }
-
+    
     /**
      * Loads collections of TLE data for the named satellite group into this manager
      * @param name of the group to load from the TLE Sources list
@@ -224,6 +224,20 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     open func satelliteCollections() -> [String] {
         return self.tleSources.map({ $0["group_name"]! as! String })
     }
+    
+    /**
+     * list of satellite collections contained inside the named group
+     * @param Group to enumerate
+     @ return An array of Strings with the names of the satellite colletions in the named group
+     */
+    open func subGroupsForCollection(name:String) -> [String] {
+        var rv = [String]()
+        if let satGroup = self.tleListForGroupNamed(name) {
+            rv = (satGroup.map({$0[$0.keys.first!]!}))
+        }
+        return rv
+    }
+    
     
     // returns an array of dictionaries TLE name/URL pairs) for a given collection
     open func tleListForGroupNamed(_ name: String) ->  [Dictionary<String, String>]? {
@@ -280,7 +294,6 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
             
             let (data, _, error) = URLSession.shared.synchronousDataTask(with: URL(string: URLString)!)
             if let data = data {
-                //rv = String(data: data , encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                 rv = String(data: data , encoding: .utf8)
             } else {
                 if let error = error {
@@ -297,8 +310,9 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     
     /**
      * Add satellites to the manager from a array of Two Line Elements
+     * @param theString - a string representing one or more TLE stanzas
      */
-    func addSatellitesFromTLEData(tleString:String) {
+    open func addSatellitesFromTLEData(tleString:String) {
         let responseArray = tleString.components(separatedBy: "\n")
         let tleCount = responseArray.count / 3
         
