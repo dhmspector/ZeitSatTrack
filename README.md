@@ -1,10 +1,14 @@
-# ZeitSatTrack - A Swift TLE Sat Tracking Library
+# ZeitSatTrack - A Swift TLE Satellite Tracking Library
 ## Author David HM Spector (spector@zeitgeist.com)
 
 # Summary
+_ZeitSatTrack_ will provide position (lat/lon, altitude) information for satellites based on standard TLE (Two Line Element) format orbital parameter descriptions.
+
+This library provider discrete or continuous tracking of satellites.
+
 # Installation 
 
-Note: This library mainly supports for **Xcode 8.2+, Swift 3.1** and embedded frameworks.
+_Baseline OS support:_  **Xcode 8.2+, Swift 3.1**; the project targets are configured for iOS but may be compiled under macOS as well. 
 
 ## Cocoapods
 ```ruby
@@ -17,8 +21,9 @@ import ZeitSatTrack
 ```
 
 ## Carthage
+TBD
 ## Directly
-You can either download the _ZeitSatTrack_ git repo as a module, or compile directly and either drag _ZeitSatTrack.framework_ into your project, or add it as a subproject/dependency in Xcode. 
+You can either download the _ZeitSatTrack_ git repo as a git sub-module, or compile directly and either drag _ZeitSatTrack.framework_ into your project, or add it as a subproject/dependency in Xcode. 
 
 # Usage / API
 
