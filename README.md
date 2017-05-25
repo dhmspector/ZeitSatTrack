@@ -48,10 +48,14 @@ The data format for the _ZeitSatTrack_ data source file is a JSON file with an a
     "data_file": "https://www.celestrak.com/NORAD/elements/2012-044.txt"
   }]
 },
-: ...more stanzas with more groups and specific satellite subgroups...
+//: ...more stanzas with more groups and specific satellite subgroups...
 ]
 ```
 
+If you wanted to add a new set of TLE groups for use with the library, creating a file such as then adding it at run-time using the ```swift  adddTLESourcesF(fileName:String, bundle: Bundle) ``` method will add all groups in the file to the list of available TLE sources. Individual subgroups in your data sources may be added to the available satellites known to the manager by calling:
+```swift
+loadSatelliteSubGroup(subgroupName:String, group: String)
+```
 # Contributing & Conduct
 
 This project welcomes contributions; all contributions must adhere to the project's [LICENSE](LICENSE). Please do not contribute any code or other resource that are covered by other people's pr organization's copyrights, patents or are otherwise encumbered.  Such contributions will be rejected.
