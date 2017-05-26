@@ -2,8 +2,7 @@
 ## Author David HM Spector (spector@zeitgeist.com)
 
 # Summary
-_ZeitSatTrack_ will provide position (lat/lon, altitude) information for satellites based on standard TLE (Two Line Element) format orbital parameter descriptions.
-
+_ZeitSatTrack_ will provide position (lat/lon, altitude) information for satellites based on standard TLE (Two Line Element) format orbital parameter descriptions.</br>
 This library provides discrete or continuous tracking of satellites either by explicitly naming a satellite whose position is desired or by providing a list of satellites to watch.
 
 # Installation 
@@ -18,18 +17,19 @@ pod 'ZeitSatTrack'
 
 ## Carthage
 TBD
+
 ## Directly
 You can either download the _ZeitSatTrack_ git repo as a git sub-module, or compile directly and either drag _ZeitSatTrack.framework_ into your project, or add it as a subproject/dependency in Xcode. 
 
 # Usage / API
 
-_ZeitSatTrack_ is provides as a manager class that can operated in one of 2 modes: auto-updating and manual.
+_ZeitSatTrack_ is provided as a manager class that can operated in one of 2 modes: auto-updating and manual.
 
 - _Autoupdating mode_ will fire off calls to a registered _ZeitSatTrackDelegate_ to notify subscribers that satellites of interest have new positions. 
 
 - _Manual mode_ allows the calling application to ask for updates to a specific satellite by name (or all known satellites); the values returned will be the name of the satellite and a set of GeoCoordinate presenting the position (lat/lon) and altitude of the satellite.  Other info about a specific satellite can be requested of the satellite object via other convenience APIs listed below.
 
-## Setup and Initialization
+## Setup
 ## Instantiating the Manager
 **import** ZeitSatTrack into your Swift files with
 
