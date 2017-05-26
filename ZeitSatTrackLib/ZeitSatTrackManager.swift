@@ -16,12 +16,10 @@ extension URLSession {
         var error: Error?
         
         let semaphore = DispatchSemaphore(value: 0)
-        
         let dataTask = self.dataTask(with: url) {
             data = $0
             response = $1
             error = $2
-            
             semaphore.signal()
         }
         dataTask.resume()
@@ -41,15 +39,19 @@ enum ZeitSatTrackStatus{
 
 private let TLESources   =   "satellite-tle-sources"
 
-//@objc protocol ZeitSatTrackManagerDelegate : class {
-//    @objc optional func assetDidComeIntoView(satellites: NSArray)
-//    @objc optional func assetDidLeaveView(satellites:NSArray)
-//}
+
+public protocol ZeitSatTrackManagerDelegate : class {
+  
+    /// ZeitSatTrack satellite observer did return data
+    ///
+    /// - Parameter satelliteList: An array of Dictionaries representing satellite positions
+    func didObserveSatellites(satelliteList: [Dictionary<String, GeoCoordinates>])
+}
 
 open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     open static let sharedInstance = ZeitSatTrackManager()
     
-    //weak var delegate:               ZeitSatTrackManagerDelegate?
+    open weak var delegate:               ZeitSatTrackManagerDelegate?
     
     var tleSources              = Array<Dictionary<String, Any>>()
     var satsInView              = [Satellite]()
@@ -60,16 +62,18 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return self.observedSatellites.count
         }
     }
+    var updateTimer:            Timer?
+    
     var locationManager:        CLLocationManager?
     var currentState:           ZeitSatTrackStatus = .uninitialized
     var locationAuthStatus:     CLAuthorizationStatus?
     var continuousUpdateMode    = true
 
-    public var location:        CLLocation? // user's current location
-    public var radius:                 CLCircularRegion?
-    public var updateDistance   = 15.24     // 50' in meters.
-    public var updateInterval   = TimeInterval(2.0)       // requested update frequency
-    var    lastUpdated:         Date?
+    public var location:        CLLocation?         // user's current location
+    public var radius:          CLCircularRegion?
+    public var updateDistance   = 15.24             // 50' in meters.
+    public var updateInterval   = TimeInterval(2.0) // requested update frequency
+    var        lastUpdated:     Date?
     
     override init() {
         super.init()
@@ -104,10 +108,16 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         if alreadyExists(name: name) && !self.observedSatellites.contains(name){
             self.observedSatellites.append(name)
             rv = true
+            if self.observedSatellites.count == 1 {
+                // this is the first satellite - start the update timer/task
+                self.startUpdateTimer()
+            }
         }
         return rv
     }
 
+    // MARK:  Oversrved Satellites
+    
     /// Stop observing a satellite
     ///
     /// - Parameter name: the name of the stellite
@@ -118,11 +128,31 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
             if let index = self.observedSatellites.index(of: name) {
                 self.observedSatellites.remove(at:index)
                 rv = true
+                if self.observedSatellites.count == 0 {
+                    // this is the first satellite - start the update timer/task
+                    self.updateTimer?.invalidate()
+                    self.updateTimer = nil
+                }
+
             }
         }
         return rv
     }
 
+    func postionsForObservedSatellites() {
+        var rv = [Dictionary<String, GeoCoordinates>]()
+        
+        self.observedSatellites.forEach { (name) in
+            let tmpPostion = self.locationForSatelliteNamed(name)
+            rv.append([name:tmpPostion!])
+        }
+        self.delegate?.didObserveSatellites(satelliteList: rv)
+    }
+    
+    func startUpdateTimer() {
+        self.updateTimer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(postionsForObservedSatellites), userInfo: nil, repeats: true)
+    }
+    
     
     // MARK: Satellite Location API
     
