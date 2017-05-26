@@ -54,13 +54,22 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     var tleSources              = Array<Dictionary<String, Any>>()
     var satsInView              = [Satellite]()
     var satellites              = [Satellite]()
-    
+    var observedSatellites      = [String]()            // names of satellites to overerve
+    var observedCount:  Int {
+        get {
+        return self.observedSatellites.count
+        }
+    }
     var locationManager:        CLLocationManager?
     var currentState:           ZeitSatTrackStatus = .uninitialized
+    var locationAuthStatus:     CLAuthorizationStatus?
     var continuousUpdateMode    = true
+
     public var location:        CLLocation? // user's current location
+    public var radius:                 CLCircularRegion?
+    public var updateDistance   = 15.24     // 50' in meters.
     public var updateInterval   = TimeInterval(2.0)       // requested update frequency
-    var radius:                 CLCircularRegion?
+    var    lastUpdated:         Date?
     
     override init() {
         super.init()
@@ -73,6 +82,37 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
+    // MARK: Primary Action Functions
+    open func enableContinuousLocationUpdates() -> CLAuthorizationStatus {
+        let authStatus = CLLocationManager.authorizationStatus()
+        if authStatus == .authorizedAlways || authStatus == .authorizedWhenInUse {
+            self.locationManager?.startUpdatingLocation()
+        }
+        return authStatus
+    }
+    
+    
+    
+    func startObservingSatelliteNamed( _ name: String) -> Bool {
+        var rv = false
+        if alreadyExists(name: name) && !self.observedSatellites.contains(name){
+            self.observedSatellites.append(name)
+            rv = true
+        }
+        return rv
+    }
+
+    func stopObservingSatelliteNamed( _ name: String) -> Bool {
+        var rv = false
+        if self.observedSatellites.contains(name){
+            if let index = self.observedSatellites.index(of: name) {
+                self.observedSatellites.remove(at:index)
+                rv = true
+            }
+        }
+        return rv
+    }
+
     
     // MARK: Satellite Location API
     
@@ -92,12 +132,41 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     /**
+     * Return a series of satellite positions between a specificed range of dates according to a deltermied interval in seconds
+     * @param name - the name of the satellite
+     * @param from - the starting date in the range
+     * @param until  - the ending date in the range
+     * @param interval - the number of seconds
+     * @return a dictionary keys on the date/interval and hte resulting
+     */
+    // @TODO:   Finish me!
+    open func locationsForSatelliteNamed(_ name: String, from: Date? = nil, until: Date, interval: Int = 2 ) -> Dictionary<Date, GeoCoordinates>? {
+        var rv: Dictionary<Date, GeoCoordinates>?
+        
+        if self.alreadyExists(name: name) == true {
+            var startDate: Date?
+            var endDate: Date?
+
+            if from == nil {
+                startDate = Date()
+            }
+            rv = Dictionary<Date,GeoCoordinates>()
+            // get the range of dates by _interval_
+            // loop over then getting the sat poision 
+            //for datesRange.each in date {
+            //let tmPosition = self.locationForSatelliteNamed(name, targetDate: date)
+            // }
+        }
+    return rv
+    }
+    
+    /**
      * For a given named satellite, return orbital components
      * @param name - the name of the desired satellite
      * @return a dicitonarty containing the orbital data, or nil if the satellite cannot be found
      *
      */
-    
+ // @TODO:  Finish me!
 //    open func orbitalInfoForSatelliteNamed(_ name: String, targetDate: Date? = nil) -> Dictionary<String, String>? {
 //        var rv = Dictionary<String,String>()
 //        if let satellite = self.satellites.filter({ sat in
@@ -162,8 +231,19 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     
     
     // MARK: CLLocationManagerDelegate Delegates
-    // TBD
-    
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.location = locations.last
+        self.lastUpdated = Date()
+    }
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        self.locationAuthStatus = status
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.enableContinuousLocationUpdates()
+        case .denied, .notDetermined, .restricted:
+            self.locationManager?.stopUpdatingLocation()
+        }
+    }
     
     // MARK: TLE Reading/Parsing
     // reads in our json source of sat TLE files

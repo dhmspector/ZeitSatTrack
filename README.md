@@ -4,7 +4,7 @@
 # Summary
 _ZeitSatTrack_ will provide position (lat/lon, altitude) information for satellites based on standard TLE (Two Line Element) format orbital parameter descriptions.
 
-This library provider discrete or continuous tracking of satellites.
+This library provides discrete or continuous tracking of satellites either by explicitly naming a satellite or by providing a list of satellites to watch.
 
 # Installation 
 
@@ -119,7 +119,7 @@ This will return a [CLAuthorizationStatus](https://developer.apple.com/reference
 
 <br/>This feature requires using the CoreLocation manager  which will require both permission of the user in the enclosing location, as well as [Privacy strings describing the use of location info](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18) in the application's _Info.plist_ file.
 
-## Setting the Update Frequency
+### Setting the Update Frequency
 _AutoUpdate mode_ includes the ability to set the frequency at which satellite info is updated.  By default the data are updated every _2 seconds_ but a different update frequency by setting the property
 
 ```swift
@@ -128,17 +128,38 @@ satTracker.updateInterval
 
 This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.
 
-> See [ZeitSatTrack Delegate](#ZeitSatTrack-Delegate) for more on receiving automatic updates
+## Adding Observed Satellites
+_ZeitSatTrack_ support 2 methods to add and remove satellite for observation:
 
-## Adding Obseerved Satellites
+```swift
+func startObservingSatelliteNamed( _ name: String) -> Bool
+```
+
+```swift
+func stopObservingSatelliteNamed( _ name: String) -> Bool
+```
+
+In either case, a result of `true` indicates the named satellite has been added (or removed) from the watch list.  A `false` result means the named satellite was not found(or not being observed).
+
+```swift
+func stopObservingAllSatellite()
+```
+
+Will remove all satellite from observation.
+
+Lastly, the number of satellites being observed is stored in the property
+```swift
+observedCount
+```
+> See [ZeitSatTrack Delegate](#ZeitSatTrack-Delegate) for more on receiving automatic updates of observed satellites.
 
 ## Getting Satellite Positions
-Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, each satellite can be queried to determine its position by calling:
+Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine theur positions by calling:
 
 ```swift
 func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
 ```
-Which returns the location for the named satellite, or 
+Which returns the location for a singe named satellite, or 
 
 ```swift
 locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
@@ -146,7 +167,7 @@ locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>
 
 Which returns an array of dictionaries with location info for all satellites known to the manager.
 
-The `GeoCoordinates` structure is very simple consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date:
+The `GeoCoordinates` structure is very simple, consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date/time:
 
 ```swift
 public struct GeoCoordinates {
@@ -182,7 +203,17 @@ Which will return a dictionary containing various orbital parameters that could 
 
 > *Note*: if the `location` parameter is not supplied it is assumed to be available from the `location` property in the _ZeitSatTrack_ manager.  
 
-> If the manager is configured for auto-updating -- which presumes the CoreLocation location access permission has been granted -- then the information returned will be based on the location property as updated periodically by CoreLocation.  If the location property is neither set or provided, this call will return _nil_.
+> If the manager is configured for auto-updating -- which presumes the CoreLocation access permission has been granted -- then the information returned will be based on the location property as updated periodically by CoreLocation.  If the location property is neither set or provided, this call will return _nil_.
+
+## Batch Satellite Updates
+Another useful feature is the ability to get a dictionary of updates for a satellite's position across a range of times. This could be useful for visualizing known satellite over time instead of performing the calculations in real-time.
+
+```swift
+locationsForSatelliteNamed(_ name: String, from: Date? = nil, until: Date, interval: Int = 2 ) -> [Dictionary<Date, GeoCoordinates>]?
+```
+Which will return a dictionary of the named satellite's positions from the start date (or "now") if passed `nil` to the "until" date over the specified interval (whose default value is 2 seconds).
+
+>*Note*: TLE files are updated semiweekly to account for such factors as changes in atmospheric drag, the reliability of GeoCoordinates for long periods in the future cannot be assured.
 
 ## Continuous Satellite Updates
 
@@ -196,7 +227,7 @@ _ZeitSatTrack_ supports a delegate protocol that will automatically deliver info
 
 
 # Satellite Data Sources
-The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrack.com) run by T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
+The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrak.com) run by Dr. T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
 
 _ZeitSatTrack_ provides a consolidated list of these as part of the library resources build right into the library and individual categories and data sets inside those categories can be selected at run time and the current, up to date versions of the TLE files.
 
