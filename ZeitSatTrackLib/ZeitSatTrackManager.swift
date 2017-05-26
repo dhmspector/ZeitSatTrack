@@ -82,7 +82,10 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-    // MARK: Primary Action Functions
+    // MARK: Primary API Functions
+    /// Start continuous location updates
+    ///
+    /// - Returns: a CLAuthorizationStatus value depdning on if the user has authorized location usage
     open func enableContinuousLocationUpdates() -> CLAuthorizationStatus {
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == .authorizedAlways || authStatus == .authorizedWhenInUse {
@@ -92,8 +95,11 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-    
-    func startObservingSatelliteNamed( _ name: String) -> Bool {
+    /// Start observing a satellite
+    ///
+    /// - Parameter name: the name of a satellite
+    /// - Returns: A Bool - true if added, false if the named satellite cannot be found
+    open func startObservingSatelliteNamed( _ name: String) -> Bool {
         var rv = false
         if alreadyExists(name: name) && !self.observedSatellites.contains(name){
             self.observedSatellites.append(name)
@@ -102,7 +108,11 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
 
-    func stopObservingSatelliteNamed( _ name: String) -> Bool {
+    /// Stop observing a satellite
+    ///
+    /// - Parameter name: the name of the stellite
+    /// - Returns: A Bool - true if added, false if the named satellite cannot be found
+    open func stopObservingSatelliteNamed( _ name: String) -> Bool {
         var rv = false
         if self.observedSatellites.contains(name){
             if let index = self.observedSatellites.index(of: name) {
@@ -116,11 +126,12 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     
     // MARK: Satellite Location API
     
-    /**
-     * for a given named sat, get its current position or the position at the specifed date-time
-     * @param date at which the location is requested, or "now" if the no date is presented
-     * @return GeoCoordinates representing the lat/lon/alt of the satellite
-     */
+    /// For a given named sat, get its current position or the position at the specifed date-time
+    ///
+    /// - Parameters:
+    ///   - name: date at which the location is requested, or "now" if the no date is presented
+    ///   - targetDate: The date for which the position info shojld be calculated
+    /// - Returns: A GeoCoordinate struct
     open func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates? {
         var rv:GeoCoordinates? = nil
         if let satellite = self.satellites.filter({ sat in
@@ -131,15 +142,15 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
     
-    /**
-     * Return a series of satellite positions between a specificed range of dates according to a deltermied interval in seconds
-     * @param name - the name of the satellite
-     * @param from - the starting date in the range
-     * @param until  - the ending date in the range
-     * @param interval - the number of seconds
-     * @return a dictionary keys on the date/interval and hte resulting
-     */
     // @TODO:   Finish me!
+    /// Return a series of satellite positions between a specificed range of dates according to a deltermied interval in seconds
+    ///
+    /// - Parameters:
+    ///   - name: the name of the satellite
+    ///   - from: the starting date in the range (defaults to "now" if nil is passed)
+    ///   - until: the ending date in the range
+    ///   - interval: the number of seconds used as an interval (stride)
+    /// - Returns: a dictionary keys on the date/interval and the resulting GeoCoodinates per interval
     open func locationsForSatelliteNamed(_ name: String, from: Date? = nil, until: Date, interval: Int = 2 ) -> Dictionary<Date, GeoCoordinates>? {
         var rv: Dictionary<Date, GeoCoordinates>?
         
@@ -173,26 +184,28 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
      * @return a dicitonarty containing the orbital data, or nil if the satellite cannot be found
      *
      */
- // @TODO:  Finish me!
-//    open func orbitalInfoForSatelliteNamed(_ name: String, targetDate: Date? = nil) -> Dictionary<String, String>? {
-//        var rv = Dictionary<String,String>()
+    /// return detailed orbital info for a satellite
+    ///
+    /// - Parameters:
+    ///   - name: the name of the satellite
+    ///   - targetDate: the date for which these paramets should be calculated
+    /// - Returns: A dictionary with the orbital data
+    open func orbitalInfoForSatelliteNamed(_ name: String, targetDate: Date? = nil) -> Dictionary<String, String>? {
+        var rv = Dictionary<String,String>()
 //        if let satellite = self.satellites.filter({ sat in
 //            return sat.name == name
 //        }).first {
 //            rv = satellite.orbitalInfo()
 //        }
-//        return rv
-//    }
+        return rv
+    }
+
     
     
-    
-    
-    
-    /**
-     * for all satellites, get  current position or the position at the specifed date-time
-     * @param date at which the location is requested, or "now" if the no date is presented
-     * @return an array of dictionaries containing the name and GeoCoordinates representing the lat/lon/alt of the satellite
-     */
+    /// for all satellites, get  current position or the position at the specifed date-time
+    ///
+    /// - Parameter date: date at which the location is requested, or "now" if the no date is presented
+    /// - Returns: an array of dictionaries containing the name and GeoCoordinates representing the lat/lon/alt of the satellite
     open func locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>] {
         var allSatPositions = [Dictionary<String, GeoCoordinates>]()
         
@@ -207,6 +220,9 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     
     
     // MARK: Convenience Methods
+    /// Return basic stats about contents of the satellite tracker
+    ///
+    /// - Returns: A dictionary containing basic stats
     open func stats() -> Dictionary<String, Any> {
         let locationStatus = CLLocationManager.authorizationStatus()
         return ["satellites": self.satellites.count,
@@ -217,14 +233,25 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     // Various ways of listing the satellites we've loaded
+    
+    
+    /// Returns a the list of known satellites by name
+    ///
+    /// - Returns: a string array of satellite names
     open func trackedSatsByName() -> [String] {
         return self.satellites.map({$0.name})
     }
     
+    /// Returns a the list of known satellites by catalog number
+    ///
+    /// - Returns: an Int array of satellite catalog numbers
     open func trackedSatsByCatalogNumber() -> [Int] {
         return self.satellites.map({$0.satCatNumber})
     }
     
+    /// Returns a the list of known satellites by COSPAR number
+    ///
+    /// - Returns: a String array of satellite COSPAR numbers
     open func trackedSatsByCosparID() -> [String] {
         return self.satellites.map({$0.cosparID})
     }
@@ -246,14 +273,13 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         self.locationAuthStatus = status
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            self.enableContinuousLocationUpdates()
+          _ =  self.enableContinuousLocationUpdates()
         case .denied, .notDetermined, .restricted:
             self.locationManager?.stopUpdatingLocation()
         }
     }
     
     // MARK: TLE Reading/Parsing
-    // reads in our json source of sat TLE files
     func readTLESources() {
         let bundle = Bundle(for: ZeitSatTrackManager.self)
         let path =  bundle.path(forResource: TLESources, ofType: "json")
@@ -264,11 +290,11 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    /**
-     * Add a new master source list to the available catalog of satellite collections
-     * @param filename - JSON file containing group and TLE dictionaries
-     * @param bundle - the bundle from which this file can be loaded
-     */
+
+     /// Add a new master source list to the available catalog of satellite collections
+     /// - Parameters:
+     /// -  filename: JSON file containing group and TLE dictionaries
+     /// -  bundle: the bundle from which this file can be loaded
     open func adddTLESourcesFromFile(_ fileName:String, bundle: Bundle) {
         let path =  bundle.path(forResource: fileName, ofType: "json")
         if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path!)) {
@@ -279,10 +305,10 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    /**
-     * Loads collections of TLE data for the named satellite group into this manager
-     * @param name of the group to load from the TLE Sources list
-     */
+
+    /// Loads collections of TLE data for the named satellite group into this manager
+    ///
+    /// - Parameter name: name of the group to load from the TLE Sources list
     open func loadSatelliteCollectionForGroup(name: String) {
         if let tleDictionary = self.tleListForGroupNamed(name) {
             tleDictionary.forEach({ (dict) in
@@ -295,12 +321,12 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-    /**
-     * loads a specific subgroup of satellite TLEs from a larger group collection
-     * @param subgroupName - name of the specific satellite group
-     * @param group - name of the enclosing colleciton of satellites
-     * @return nil, or error if the group or subgroup cannot be found (404), or if there is a timeout or other network error (500)
-     */
+    /// loads a specific subgroup of satellite TLEs from a larger group collection
+    ///
+    /// - Parameters:
+    ///   - subgroupName: subgroupName - name of the specific satellite group
+    ///   - group: name of the enclosing colleciton of satellites
+    /// - Returns: nil, or Error if the group or subgroup cannot be found (404), or if there is a timeout or other network error (500)
     open func loadSatelliteSubGroup(subgroupName:String, group: String) -> Error? {
         var error: Error?
         
@@ -326,19 +352,17 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-    /**
-     * Names of available satellite collections
-     * @return an array of names of satellite collections known t this library
-     */
+    /// Names of available satellite collections
+    ///
+    /// - Returns: an array of names of satellite collections known t this library
     open func satelliteCollections() -> [String] {
         return self.tleSources.map({ $0["group_name"]! as! String })
     }
     
-    /**
-     * list of satellite collections contained inside the named group
-     * @param Group to enumerate
-     @ return An array of Strings with the names of the satellite colletions in the named group
-     */
+    /// list of satellite collections contained inside the named group
+    ///
+    /// - Parameter name: Group to enumerate
+    /// - Returns: An array of Strings with the names of the satellite colletions in the named group
     open func subGroupsForCollection(name:String) -> [String] {
         var rv = [String]()
         if let satGroup = self.tleListForGroupNamed(name) {
@@ -348,7 +372,10 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
     
-    // returns an array of dictionaries TLE name/URL pairs) for a given collection
+    /// an array of dictionaries TLE name/URL pairs) for a given collection
+    ///
+    /// - Parameter name: name of the requested group
+    /// - Returns: an array of dictionaries containing name/URL pairs representing a TLE collection
     open func tleListForGroupNamed(_ name: String) ->  [Dictionary<String, String>]? {
         var rv: [Dictionary<String, String>]?
         theLoop: for dict in self.tleSources {
@@ -360,10 +387,11 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
     
-    /**
-     * Get TLE data from the specified URL or nil if unavailable for any reason (timeouts, etc)
-     * @return a string presenting the contents of a TLE file
-     */
+
+    /// Get TLE data from the specified URL or nil if unavailable for any reason (timeouts, etc)
+    ///
+    /// - Parameter url: the UR of a remote TLE document
+    /// - Returns: a string presenting the contents of a TLE file
     open func tleDataForURL(_ url:String) -> String? {
         var rv: String?
         
@@ -381,13 +409,12 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
     
-    /**
-     * Fetch TLE file for a named satellite collection from CelesTrack.com
-     * @param satellite group name (from the tleSources managed by this library)
-     * @param subGroupName the satellie collection to fetch; this is a TLE collection file from CelesTrak.com
-     * @returns the TLE data for a given collection of Sats in the named group
-     */
-    // returns the TLE data for a given collection of Sats in the named group
+    /// Fetch TLE file for a named satellite collection from CelesTrack.com
+    ///
+    /// - Parameters:
+    ///   - name: satellite group name (from the tleSources managed by this library)
+    ///   - subGroupName: subGroupName the satellie collection to fetch; this is a TLE collection file from CelesTrak.com
+    /// - Returns: the TLE data for a given collection of Sats in the named group
     open func tleDataForSatelliteGroup(_ name:String, subGroupName: String) -> String? {
         var rv: String?
         var URLString = ""
@@ -417,10 +444,9 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     // NB: this is pure oribtal info.  @TODO: we should make a different structure to hold meta-data
     // like descriptive info on each sat, using the sat's catalog name (or number) as the key
     
-    /**
-     * Add satellites to the manager from a array of Two Line Elements
-     * @param theString - a string representing one or more TLE stanzas
-     */
+    /// Add satellites to the manager from a array of Two Line Elements
+    ///
+    /// - Parameter tleString: a string representing one or more TLE stanzas
     open func addSatellitesFromTLEData(tleString:String) {
         let responseArray = tleString.components(separatedBy: "\n")
         let tleCount = responseArray.count / 3
