@@ -116,7 +116,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
 
-    // MARK:  Oversrved Satellites
+    // MARK:  Observed Satellites
     
     /// Stop observing a satellite
     ///
@@ -172,7 +172,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
     
-    // @TODO:   Finish me!
+
     /// Return a series of satellite positions between a specificed range of dates according to a deltermied interval in seconds
     ///
     /// - Parameters:
@@ -202,18 +202,25 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
 
     
-// @TODO - needs to call the same method for regulare observed sat updates, bu as a one-shot o the specified date
-//    open func observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]? {
-//        
-//    }
+    /// return postions for observed satellites
+    ///
+    /// - Parameter date: target date
+    /// - Returns: Array of dicitonaries with satellite names and Coordinates or nil
+    open func observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]? {
+        
+        if self.observedSatellites.count == 0 {
+            return nil
+        }
+        
+        var rv = [Dictionary<String, GeoCoordinates>]()
+        self.observedSatellites.forEach { (name) in
+            let tmpPostion = self.locationForSatelliteNamed(name, targetDate: date != nil ? date! : Date() )
+            rv.append([name:tmpPostion!])
+        }
+        return rv
+    }
 
     
-    /**
-     * For a given named satellite, return orbital components
-     * @param name - the name of the desired satellite
-     * @return a dicitonarty containing the orbital data, or nil if the satellite cannot be found
-     *
-     */
     /// return detailed orbital info for a satellite
     ///
     /// - Parameters:
