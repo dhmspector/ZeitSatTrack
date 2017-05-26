@@ -169,7 +169,7 @@ locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>
 Or, if a there is a list of satellite being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
 
 ```swift
-onservedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
+observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
 ```
 
 Both calls returns an array of dictionaries with location info for all satellites known to the manager.

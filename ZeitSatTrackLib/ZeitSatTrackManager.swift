@@ -159,6 +159,13 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         }
     return rv
     }
+
+    
+// @TODO - needs to call the same method for regulare observed sat updates, bu as a one-shot o the specified date
+//    open func observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]? {
+//        
+//    }
+
     
     /**
      * For a given named satellite, return orbital components
