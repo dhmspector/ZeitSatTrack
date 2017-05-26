@@ -128,8 +128,9 @@ satTracker.updateInterval
 
 This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.  Another possibility if you need to know a satellite's track over a range of times is to request a [batch location update for the satellite](#Batch-Satellite-Updates).
 
-## Adding Observed Satellites
-_ZeitSatTrack_ support 2 methods to add and remove satellite for observation:
+## Observing Multiple Satellites
+
+_ZeitSatTrack_ has the ability to watch a number of satellites simultaneously and support 2 methods to add and remove satellite for observation:
 
 ```swift
 func startObservingSatelliteNamed( _ name: String) -> Bool
@@ -154,7 +155,7 @@ observedCount
 > See [ZeitSatTrack Delegate](#ZeitSatTrack-Delegate) for more on receiving automatic updates of observed satellites.
 
 ## Getting Satellite Positions
-Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine theur positions by calling:
+Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine their positions by calling:
 
 ```swift
 func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
@@ -165,7 +166,13 @@ Which returns the location for a singe named satellite, or
 locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
 ```
 
-Which returns an array of dictionaries with location info for all satellites known to the manager.
+Or, if a there is a list of satellite being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
+
+```swift
+onservedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
+```
+
+Both calls returns an array of dictionaries with location info for all satellites known to the manager.
 
 The `GeoCoordinates` structure is very simple, consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date/time:
 
