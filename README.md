@@ -174,7 +174,9 @@ observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordina
 
 Both calls returns an array of dictionaries with location info for all satellites known to the manager.
 
-The `GeoCoordinates` structure is very simple, consisting of latitude, longitude and altitude of satellite at the time specified in the call -- or "now" if called without a specific date/time:
+### Satellite Position Data
+
+Position data is represented by the `GeoCoordinates` structure. This is a very simple struct, consisting of latitude, longitude and altitude of satellite:
 
 ```swift
 public struct GeoCoordinates {
