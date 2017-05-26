@@ -120,13 +120,13 @@ This will return a [CLAuthorizationStatus](https://developer.apple.com/reference
 <br/>This feature requires using the CoreLocation manager  which will require both permission of the user in the enclosing location, as well as [Privacy strings describing the use of location info](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18) in the application's _Info.plist_ file.
 
 ### Setting the Update Frequency
-_AutoUpdate mode_ includes the ability to set the frequency at which satellite info is updated.  By default the data are updated every _2 seconds_ but a different update frequency by setting the property
+_AutoUpdate mode_ includes the ability to set the frequency at which satellite info is updated.  By default the data are updated every _2 seconds_ but a different update frequency can be selected by setting the property
 
 ```swift
 satTracker.updateInterval
 ```
 
-This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.
+This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.  Another possibility if you need to know a satellite's track over a range of times is to request a [batch location update for the satellite](#Batch-Satellite-Updates).
 
 ## Adding Observed Satellites
 _ZeitSatTrack_ support 2 methods to add and remove satellite for observation:
