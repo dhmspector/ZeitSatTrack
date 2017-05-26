@@ -1,14 +1,14 @@
-# ZeitSatTrack - A Swift TLE Satellite Tracking Library
+# ZeitSatTrack - A Swift Satellite Tracking Library
 ## Author David HM Spector (spector@zeitgeist.com)
 
 # Summary
 _ZeitSatTrack_ will provide position (lat/lon, altitude) information for satellites based on standard TLE (Two Line Element) format orbital parameter descriptions.
 
-This library provides discrete or continuous tracking of satellites either by explicitly naming a satellite or by providing a list of satellites to watch.
+This library provides discrete or continuous tracking of satellites either by explicitly naming a satellite whose position is desired or by providing a list of satellites to watch.
 
 # Installation 
 
-_Baseline OS support:_  **Xcode 8.2+, Swift 3.1**; the project targets are configured for iOS but may be compiled under macOS as well. 
+_Baseline OS support:_  **Xcode 8.2+, Swift 3.1**; the project's framework target is configured for iOS but may be compiled under macOS as well. 
 
 ## Cocoapods
 ```ruby
@@ -25,19 +25,19 @@ You can either download the _ZeitSatTrack_ git repo as a git sub-module, or comp
 
 _ZeitSatTrack_ is provides as a manager class that can operated in one of 2 modes: auto-updating and manual.
 
-- _Autoupdating mode_ will fire off calls to  _ZeitSatTrackDelegate_ to notify subscribers that satellites of interest have new positions. 
+- _Autoupdating mode_ will fire off calls to a registered _ZeitSatTrackDelegate_ to notify subscribers that satellites of interest have new positions. 
 
-- _Manual mode_ allows the calling application to ask for updates to a specific satellite by name (or all known satellites); the values return will be the name of the satellite and a set of GeoCoordinate presenting the position (lat/lon) and altitude of the satellite.  Other info about a specific satellite can be requested of the satellite object via other convenience APIs listed below.
+- _Manual mode_ allows the calling application to ask for updates to a specific satellite by name (or all known satellites); the values returned will be the name of the satellite and a set of GeoCoordinate presenting the position (lat/lon) and altitude of the satellite.  Other info about a specific satellite can be requested of the satellite object via other convenience APIs listed below.
 
 ## Setup and Initialization
-## Instantiating
+## Instantiating the Manager
 **import** ZeitSatTrack into your Swift files with
 
 ```swift
 import ZeitSatTrack
 ```
 
-then:
+then instantiate the library with:
 
 ```swift
 let satTracker = ZeitSatTrackManager.sharedInstance
@@ -93,7 +93,7 @@ Most of these listings are self describing, but more details can be found at the
 ```swift
 addSatellitesFromTLEData(tleString:String) 
 ```
-Where the string is one or more stanzas in the [Two-Line Element format](https://en.wikipedia.org/wiki/Two-line_element_set):
+Where the string is one or more stanzas in the [Two-Line Element format](https://en.wikipedia.org/wiki/Two-line_element_set), for example:
 
 ```
 ISS (ZARYA)             
@@ -101,6 +101,23 @@ ISS (ZARYA)
 2 25544  51.6416 154.3996 0005308 189.3117 243.1127 15.53923882 58131
 ```
 The string provided must adhere to the format and are separated by newline characters between each TLE entry.
+
+### Loading a TLE Set
+
+Datasets are loaded by referring to either a satellite group name or group name and a sub group. </br></br>
+In the case of loading a group, _ZeitSatTrack_ will load all of the components of that group (which can be literally hundreds of satellite TLEs).
+
+```swift
+func loadSatelliteCollectionForGroup(name: String) {
+```
+
+If only a specific set of satellites is required, the other subgroup loading version of the call is used:
+
+```swift
+func loadSatelliteSubGroup(subgroupName:String, group: String) -> Error? 
+```
+
+> *Note*: loading a set of TLEs does not start tracking satellites; it is merely loading of a catalog of satellites that _can_ be tracked.  See [Getting Satellite Positions](#Getting-Satellite-Positions) for details on getting poisons from stars in the catalog.
 
 ## Setting the Location
 If a location is set, additional information about satellites from the perspective of an Earthbound observer can requested.  Location can be set to be fixed point by setting the property directly:
@@ -128,6 +145,27 @@ satTracker.updateInterval
 
 This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.  Another possibility if you need to know a satellite's track over a range of times is to request a [batch location update for the satellite](#Batch-Satellite-Updates).
 
+# Getting Satellite Positions
+## Getting Satellite Position Data
+Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine their positions by calling:
+
+```swift
+func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
+```
+Which returns the location for a singe named satellite, or 
+
+```swift
+locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
+```
+
+Or, if a there is a list of satellite being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
+
+```swift
+observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
+```
+
+Both calls returns an array of dictionaries with location info for all satellites known to the manager.
+
 ## Observing Multiple Satellites
 
 _ZeitSatTrack_ has the ability to watch a number of satellites simultaneously and support 2 methods to add and remove satellite for observation:
@@ -154,27 +192,8 @@ observedCount
 ```
 > See [ZeitSatTrack Delegate](#ZeitSatTrack-Delegate) for more on receiving automatic updates of observed satellites.
 
-## Getting Satellite Positions
-Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine their positions by calling:
 
-```swift
-func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
-```
-Which returns the location for a singe named satellite, or 
-
-```swift
-locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
-```
-
-Or, if a there is a list of satellite being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
-
-```swift
-observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
-```
-
-Both calls returns an array of dictionaries with location info for all satellites known to the manager.
-
-### Satellite Position Data
+### Position Data
 
 Position data is represented by the `GeoCoordinates` structure. This is a very simple struct, consisting of latitude, longitude and altitude of satellite:
 

@@ -173,7 +173,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
     }
     
 
-    /// Return a series of satellite positions between a specificed range of dates according to a deltermied interval in seconds
+    /// Return a series of satellite positions between a specificed range of dates according to a determied interval in seconds
     ///
     /// - Parameters:
     ///   - name: the name of the satellite
@@ -193,7 +193,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
             }
             rv = Dictionary<Date,GeoCoordinates>()
             // get the range of dates by _interval_
-            // loop over then getting the sat poision 
+            // loop over then getting the sat position, e.g.:
             //for datesRange.each in date {
             //let tmPosition = self.locationForSatelliteNamed(name, targetDate: date)
             // }
