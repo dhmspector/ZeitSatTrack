@@ -1,30 +1,4 @@
 PODS:
-  - AFNetworking (2.4.1):
-    - AFNetworking/NSURLConnection (= 2.4.1)
-    - AFNetworking/NSURLSession (= 2.4.1)
-    - AFNetworking/Reachability (= 2.4.1)
-    - AFNetworking/Security (= 2.4.1)
-    - AFNetworking/Serialization (= 2.4.1)
-    - AFNetworking/UIKit (= 2.4.1)
-  - AFNetworking/NSURLConnection (2.4.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.4.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.4.1)
-  - AFNetworking/Security (2.4.1)
-  - AFNetworking/Serialization (2.4.1)
-  - AFNetworking/UIKit (2.4.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-  - boost/graph-includes (1.51.0)
-  - boost/math-includes (1.51.0)
-  - boost/pointer_cast-includes (1.51.0)
-  - boost/shared_ptr-includes (1.51.0)
-  - boost/string_algorithms-includes (1.51.0)
   - clipper (6.1.3a)
   - eigen (3.2.10)
   - FMDB (2.6.2):
@@ -34,12 +8,12 @@ PODS:
   - proj4 (4.8.0)
   - SMCalloutView (2.1.5)
   - tinyxml (2.1.0)
-  - WhirlyGlobe (2.4):
-    - WhirlyGlobe/MaplyComponent (= 2.4)
-  - WhirlyGlobe/aaplus (2.4)
-  - WhirlyGlobe/glues-wg (2.4)
-  - WhirlyGlobe/kissxml (2.4)
-  - WhirlyGlobe/Lib (2.4):
+  - WhirlyGlobe (2.5):
+    - WhirlyGlobe/MaplyComponent (= 2.5)
+  - WhirlyGlobe/aaplus (2.5)
+  - WhirlyGlobe/glues-wg (2.5)
+  - WhirlyGlobe/kissxml (2.5)
+  - WhirlyGlobe/Lib (2.5):
     - clipper (~> 6.1.3a)
     - libjson (~> 7.6.0)
     - proj4 (~> 4.8.0)
@@ -48,34 +22,34 @@ PODS:
     - WhirlyGlobe/Lib-Headers
     - WhirlyGlobe/octencoding
     - WhirlyGlobe/shapefile
-  - WhirlyGlobe/Lib-Headers (2.4):
-    - boost/graph-includes (<= 1.51.0)
-    - boost/math-includes (<= 1.51.0)
-    - boost/pointer_cast-includes (<= 1.51.0)
-    - boost/shared_ptr-includes (<= 1.51.0)
-    - boost/string_algorithms-includes (<= 1.51.0)
+  - WhirlyGlobe/Lib-Headers (2.5):
     - eigen (~> 3.2.4)
-  - WhirlyGlobe/MaplyComponent (2.4):
-    - AFNetworking (~> 2.4.0)
+  - WhirlyGlobe/MaplyComponent (2.5):
     - FMDB
     - SMCalloutView
     - WhirlyGlobe/aaplus
     - WhirlyGlobe/kissxml
     - WhirlyGlobe/Lib
     - WhirlyGlobe/MaplyComponent-Headers
-  - WhirlyGlobe/MaplyComponent-Headers (2.4):
+  - WhirlyGlobe/MaplyComponent-Headers (2.5):
     - WhirlyGlobe/Lib-Headers
-  - WhirlyGlobe/octencoding (2.4)
-  - WhirlyGlobe/shapefile (2.4)
-  - WhirlyGlobeResources (2.3)
+  - WhirlyGlobe/octencoding (2.5)
+  - WhirlyGlobe/shapefile (2.5)
 
 DEPENDENCIES:
-  - WhirlyGlobe (= 2.4)
-  - WhirlyGlobeResources
+  - WhirlyGlobe (from `https://github.com/mousebird/WhirlyGlobe.git`, tag `v2.5`)
+
+EXTERNAL SOURCES:
+  WhirlyGlobe:
+    :git: https://github.com/mousebird/WhirlyGlobe.git
+    :tag: v2.5
+
+CHECKOUT OPTIONS:
+  WhirlyGlobe:
+    :git: https://github.com/mousebird/WhirlyGlobe.git
+    :tag: v2.5
 
 SPEC CHECKSUMS:
-  AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
-  boost: 6c5c8d8daef26ac83c1e1c00ad14de62b80161d7
   clipper: b009ea56c501e756299e6999e2c73eef6e1ed218
   eigen: e2d5ffb7be5a884d4608ebe35a97b6f65e13ed8b
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
@@ -83,9 +57,8 @@ SPEC CHECKSUMS:
   proj4: 234525105d05a33b2ae9a90a6fe3935f7a246f7e
   SMCalloutView: 5c0ee363dc8e7204b2fda17dfad38c93e9e23481
   tinyxml: 41d718babd106ac5d39d4e98b43c835d3b9080d8
-  WhirlyGlobe: 2849f458220be42d92d814ba04377586cadbf7f1
-  WhirlyGlobeResources: d7b3e929e828f958a8477ff6797f962fdb165472
+  WhirlyGlobe: cabe48a4a99eae66afc7564c0c2a78b216f15c2f
 
-PODFILE CHECKSUM: c8690222d66ebcc0cf578781446d3a9391cd81fb
+PODFILE CHECKSUM: 20a6f537b72e35232c5a98660273138ade2df2e2
 
 COCOAPODS: 1.2.0

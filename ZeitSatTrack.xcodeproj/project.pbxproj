@@ -86,6 +86,7 @@
 		5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack.release.xcconfig"; sourceTree = "<group>"; };
 		7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests.release.xcconfig"; sourceTree = "<group>"; };
+		8B8512371ED92CEA0090B41A /* bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
 		8B9C2A031EC6D32100C7795A /* ZeitSatTrackDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeitSatTrackDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A171EC6D32100C7795A /* ZeitSatTrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeitSatTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A1B1EC6D32100C7795A /* ZeitSatTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitSatTrackUITests.swift; sourceTree = "<group>"; };
@@ -254,6 +255,7 @@
 		8BCB543E1ED69A420035C9CD /* ZeitSatTrackDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8B8512371ED92CEA0090B41A /* bridging-header.h */,
 				8BCB543F1ED69A420035C9CD /* AppDelegate.swift */,
 				8BCB54401ED69A420035C9CD /* Assets.xcassets */,
 				8BCB54411ED69A420035C9CD /* LaunchScreen.storyboard */,
@@ -811,6 +813,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeitgeist.ZeitSatTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/bridging-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -826,6 +829,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeitgeist.ZeitSatTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/bridging-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
