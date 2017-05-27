@@ -182,7 +182,7 @@ Both calls returns an array of dictionaries with location info for all satellite
 
 ## Observing Multiple Satellites
 
-_ZeitSatTrack_ has the ability to watch a number of satellites simultaneously. There are 2 methods to add and remove satellite for observation:
+_ZeitSatTrack_ has the ability to watch a number of satellites simultaneously. There are 2 methods to add and remove satellites for observation:
 
 ```swift
 func startObservingSatelliteNamed( _ name: String) -> Bool

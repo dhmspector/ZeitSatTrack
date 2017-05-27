@@ -1,2 +1,2 @@
-#import "WhirlyGlobeComponent.h"
+#import <WhirlyGlobeComponent.h>
 
