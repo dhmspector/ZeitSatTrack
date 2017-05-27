@@ -1,0 +1,2 @@
+#import "WhirlyGlobeComponent.h"
+

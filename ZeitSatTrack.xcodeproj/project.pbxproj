@@ -86,7 +86,7 @@
 		5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack.release.xcconfig"; sourceTree = "<group>"; };
 		7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests.release.xcconfig"; sourceTree = "<group>"; };
-		8B8512371ED92CEA0090B41A /* bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
+		8B8512371ED92CEA0090B41A /* ZeitSatTrackDemo-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZeitSatTrackDemo-bridging-header.h"; sourceTree = "<group>"; };
 		8B9C2A031EC6D32100C7795A /* ZeitSatTrackDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeitSatTrackDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A171EC6D32100C7795A /* ZeitSatTrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeitSatTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A1B1EC6D32100C7795A /* ZeitSatTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitSatTrackUITests.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 		8BCB543E1ED69A420035C9CD /* ZeitSatTrackDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8B8512371ED92CEA0090B41A /* bridging-header.h */,
+				8B8512371ED92CEA0090B41A /* ZeitSatTrackDemo-bridging-header.h */,
 				8BCB543F1ED69A420035C9CD /* AppDelegate.swift */,
 				8BCB54401ED69A420035C9CD /* Assets.xcassets */,
 				8BCB54411ED69A420035C9CD /* LaunchScreen.storyboard */,
@@ -484,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		25B7CC17E3E659C04908CF8C /* [CP] Embed Pods Frameworks */ = {
@@ -514,7 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		351E23C04A944ADE85A0806C /* [CP] Check Pods Manifest.lock */ = {
@@ -529,7 +529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		36ECA46EB4CB0CE34C6B7D03 /* [CP] Embed Pods Frameworks */ = {
@@ -619,7 +619,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -809,11 +809,24 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/eigen\"",
+					"\"${PODS_ROOT}/clipper\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/clipper/\"",
+					"$(PODS_ROOT)/eigen",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/WhirlyGlobeResources\"",
+					"\"${PODS_ROOT}/Headers/Public/eigen\"",
+					"\"$${PODS_ROOT}/WhirlyGlobe\"",
+					"\"${PODS_ROOT}/WhirlyGlobe/MaplyComponent-Headers/\"/**",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ZeitSatTrackDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeitgeist.ZeitSatTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/bridging-header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/ZeitSatTrackDemo-bridging-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -825,11 +838,24 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/eigen\"",
+					"\"${PODS_ROOT}/clipper\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/clipper/\"",
+					"$(PODS_ROOT)/eigen",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/WhirlyGlobeResources\"",
+					"\"${PODS_ROOT}/Headers/Public/eigen\"",
+					"\"$${PODS_ROOT}/WhirlyGlobe\"",
+					"\"${PODS_ROOT}/WhirlyGlobe/MaplyComponent-Headers/\"/**",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ZeitSatTrackDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeitgeist.ZeitSatTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/bridging-header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/ZeitSatTrackDemo-bridging-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

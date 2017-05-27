@@ -21,6 +21,20 @@ TBD
 ## Directly
 You can either download the _ZeitSatTrack_ git repo as a git sub-module, or compile directly and either drag _ZeitSatTrack.framework_ into your project, or add it as a subproject/dependency in Xcode. 
 
+# Satellite Data Sources
+The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrak.com) run by Dr. T.S Kelso.  The Celestrack site maintains a large list of TLE data files broken out by a number of useful categories (Weather, Amateur, Space stations, Navigation, etc).
+
+_ZeitSatTrack_ provides a consolidated list of these as part of the library resources built right into the library. Individual categories and data sets inside those categories can be selected at run time and the current, up to date versions of the TLE files.
+
+The list includes hundreds of satellites in the following areas:
+
+- Common Interest (a selection from the categories below)
+- Weather & Earth Resources Satellites
+- Communications Satellites
+- Navigation Satellites
+- Scientific Satellites
+- Miscellaneous Satellites
+
 # Usage / API
 
 _ZeitSatTrack_ is provided as a manager class that can operated in one of 2 modes: auto-updating and manual.
@@ -85,7 +99,7 @@ Returns an array of names of the satellite TLE files for this group:</br>
   - 12 : "Molniya"
 ```
 
-Most of these listings are self describing, but more details can be found at the [Celestrack](https://www.celestrack.com) site.
+Most of these listings are self describing, but more details can on specific TLE collections be found at the [Celestrack](https://www.celestrack.com) site.
 
 
 <br/>Lastly, you can add satellites explicitly by providing a string containing TLE data with:
@@ -117,16 +131,16 @@ If only a specific set of satellites is required, the other subgroup loading ver
 func loadSatelliteSubGroup(subgroupName:String, group: String) -> Error? 
 ```
 
-> *Note*: loading a set of TLEs does not start tracking satellites; it is merely loading of a catalog of satellites that _can_ be tracked.  See [Getting Satellite Positions](#Getting-Satellite-Positions) for details on getting poisons from stars in the catalog.
+> *Note*: loading a set of TLEs does not start tracking satellites; it is merely loading of a catalog of satellites and doing the initial math needed so that satellites _can_ be tracked.  See [Getting Satellite Positions](#Getting-Satellite-Positions) for details on getting positions from items in the catalog.
 
-## Setting the Location
-If a location is set, additional information about satellites from the perspective of an Earthbound observer can requested.  Location can be set to be fixed point by setting the property directly:
+## Setting the Reference Location
+If a reference location is set, additional information about satellites from the perspective of an Earthbound observer can requested.  Location can be set to be fixed point by setting the property directly:
 
 ```swift
 satTracker.location = CLLocation(latitude: 37.780129, longitude: -122.392033)
 ```
 
-...or by enabling continuous updating using the call:
+...or by enabling continuous location updating using the call:
 
 ```swift
 Let status = satTracker.enableContinuousLocationUpdates()
@@ -134,7 +148,7 @@ Let status = satTracker.enableContinuousLocationUpdates()
 
 This will return a [CLAuthorizationStatus](https://developer.apple.com/reference/corelocation/clauthorizationstatus) value.
 
-<br/>This feature requires using the CoreLocation manager  which will require both permission of the user in the enclosing location, as well as [Privacy strings describing the use of location info](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18) in the application's _Info.plist_ file.
+<br/>This feature requires using the CoreLocation manager  which will require both permission of the user in the enclosing application, as well as the addition of [Privacy strings describing the use of location info](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18) in the application's _Info.plist_ file.
 
 ### Setting the Update Frequency
 _AutoUpdate mode_ includes the ability to set the frequency at which satellite info is updated.  By default the data are updated every _2 seconds_ but a different update frequency can be selected by setting the property
@@ -146,7 +160,7 @@ satTracker.updateInterval
 This property is in _seconds_.  Setting it to less than 1 second can have adverse impacts on app performance as performing orbital calculations on a large number of satellites is quite computationally expensive.  Another possibility if you need to know a satellite's track over a range of times is to request a [batch location update for the satellite](#Batch-Satellite-Updates).
 
 # Getting Satellite Positions
-## Getting Satellite Position Data
+## Getting Discrete Satellite Position Data
 Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine their positions by calling:
 
 ```swift
@@ -158,7 +172,7 @@ Which returns the location for a singe named satellite, or
 locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
 ```
 
-Or, if a there is a list of satellite being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
+for a dictionary containing info on all known satellites. Or, if a there is a list of satellites being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
 
 ```swift
 observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
@@ -236,41 +250,27 @@ which will return a dictionary containing various orbital parameters that could 
 > If the manager is configured for auto-updating -- which presumes the CoreLocation access permission has been granted -- then the information returned will be based on the location property as updated periodically by CoreLocation.  If the location property is neither set or provided, this call will return _nil_.
 
 ## Batch Satellite Updates
-Another useful feature is the ability to get a dictionary of updates for a satellite's position across a range of times. This could be useful for visualizing known satellite over time instead of performing the calculations in real-time.
+Another useful feature is the ability to get a dictionary of updates for a satellite's position across a range of times. This could be useful for visualizing a satellite's path over time instead of performing the calculations in real-time.
 
 ```swift
 locationsForSatelliteNamed(_ name: String, from: Date? = nil, until: Date, interval: Int = 2 ) -> [Dictionary<Date, GeoCoordinates>]?
 ```
 Which will return a dictionary of the named satellite's positions from the start date (or "now") if passed `nil` to the "until" date over the specified interval (whose default value is 2 seconds).
 
->*Note*: TLE files are updated semiweekly to account for such factors as changes in atmospheric drag, the reliability of GeoCoordinates for long periods in the future cannot be assured.
+>*Note*: TLE files are updated semiweekly to account for such factors as changes in atmospheric drag, the reliability of batch generated GeoCoordinates for long periods in the future cannot be assured.
 
 ## Continuous Satellite Updates
 
 By default you have to explicitly ask the library to get either an individual update or get updates for all known satellites. 
 
-An additional available mode is auto-updating mode where the manager will fire off a periodic timer to update a list of satellites of interest.
+An additional available mode is the auto-updating mode where the manager will fire off a periodic timer to update a list of satellites of interest.
 
 
 ### ZeitSatTrack Delegate
 _ZeitSatTrack_ supports a delegate protocol that will automatically deliver information on observed Satellites.
 
+# Adding Satellite Data Sources
 
-# Satellite Data Sources
-The most common source of two-line (TLE) element files is [Celestrack](https://www.celestrak.com) run by Dr. T.S Kelso.  The Celestrack site maintains a large list of TLE data file broken out by a number of useful categories (Weather, Amateur, Space stations, etc).
-
-_ZeitSatTrack_ provides a consolidated list of these as part of the library resources build right into the library and individual categories and data sets inside those categories can be selected at run time and the current, up to date versions of the TLE files.
-
-The list includes hundreds of satellites in the following areas:
-
-- Common Interest (a selection from the categories below)
-- Weather & Earth Resources Satellites
-- Communications Satellites
-- Navigation Satellites
-- Scientific Satellites
-- Miscellaneous Satellites
-
-## Adding to the Default Sources
 The data format for the _ZeitSatTrack_ data source file is a JSON file with an array of group stanzas  that contain dictionaries with the names and URLs of TLE files, for example:
 
 ```json
