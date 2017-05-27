@@ -6,10 +6,7 @@ target 'ZeitSatTrack' do
   use_frameworks!
 
   # Pods for ZeitSatTrack
-     pod 'WhirlyGlobeResources'
 
-     pod 'WhirlyGlobe', :git => 'https://github.com/mousebird/WhirlyGlobe.git'
-     #pod 'WhirlyGlobe', :git => 'https://github.com/mousebird/WhirlyGlobe.git', :branch => 'master'
 
 
   target 'ZeitSatTrackTests' do

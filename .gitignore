@@ -2,6 +2,7 @@
 *~
 build
 Pods
+libs/WhirlyGlobeMaply
 \#*
 fastlane/screenshots/
 *.xcuserdatad
