@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A67AC6C587FC063DD901586 /* Pods_ZeitSatTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */; };
-		357CBB13270AA0939A5C9D2A /* Pods_ZeitSatTrackDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C494F278B0EBBCC3C0E278 /* Pods_ZeitSatTrackDemo.framework */; };
-		565F0A2C010F161E78B26ED8 /* Pods_ZeitSatTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE504BC68D0EE1B3E7D9A71A /* Pods_ZeitSatTrackUITests.framework */; };
+		8B7AD6F71EDA1092008A4A28 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD6F61EDA1092008A4A28 /* libstdc++.tbd */; };
+		8B7AD6F81EDA109E008A4A28 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA659C31ED4DB4500EBFDD1 /* CoreLocation.framework */; };
+		8B7AD6FA1EDA10A7008A4A28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD6F91EDA10A7008A4A28 /* libz.tbd */; };
+		8B7AD6FC1EDA10B0008A4A28 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD6FB1EDA10B0008A4A28 /* libxml2.tbd */; };
+		8B7AD6FE1EDA10B8008A4A28 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD6FD1EDA10B8008A4A28 /* libsqlite3.tbd */; };
+		8B7AD70B1EDA11ED008A4A28 /* WhirlyGlobeMaplyComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD7061EDA1163008A4A28 /* WhirlyGlobeMaplyComponent.framework */; };
 		8B9C2A1C1EC6D32100C7795A /* ZeitSatTrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9C2A1B1EC6D32100C7795A /* ZeitSatTrackUITests.swift */; };
 		8BA659A21ED400D200EBFDD1 /* ZeitSatTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA659991ED400D100EBFDD1 /* ZeitSatTrack.framework */; };
 		8BA659A91ED400D200EBFDD1 /* ZeitSatTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA659A81ED400D200EBFDD1 /* ZeitSatTrackTests.swift */; };
@@ -30,10 +33,31 @@
 		8BCB544A1ED69A420035C9CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCB54431ED69A420035C9CD /* Main.storyboard */; };
 		8BCB544B1ED69A420035C9CD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BCB54451ED69A420035C9CD /* Info.plist */; };
 		8BCB544C1ED69A420035C9CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB54461ED69A420035C9CD /* ViewController.swift */; };
-		C7939D6FF480E1672A8B008A /* Pods_ZeitSatTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C11213FB611FEDC7E82065 /* Pods_ZeitSatTrackTests.framework */; };
+		8BEAA6881EDA2F4400356CD9 /* geography-class_medres.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 8BEAA6871EDA2F4400356CD9 /* geography-class_medres.mbtiles */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8B7AD7051EDA1163008A4A28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B7AD6FF1EDA1162008A4A28 /* WhirlyGlobeMaplyComponent.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BE536FF1D2499E500B60FAD;
+			remoteInfo = WhirlyGlobeMaplyComponent;
+		};
+		8B7AD7071EDA1163008A4A28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B7AD6FF1EDA1162008A4A28 /* WhirlyGlobeMaplyComponent.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BE537091D2499E500B60FAD;
+			remoteInfo = WhirlyGlobeMaplyComponentTests;
+		};
+		8B7AD70C1EDA14E7008A4A28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B7AD6FF1EDA1162008A4A28 /* WhirlyGlobeMaplyComponent.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BE536FE1D2499E500B60FAD;
+			remoteInfo = WhirlyGlobeMaplyComponent;
+		};
 		8B9C2A181EC6D32100C7795A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8B9C29FB1EC6D32100C7795A /* Project object */;
@@ -79,14 +103,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00C11213FB611FEDC7E82065 /* Pods_ZeitSatTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0280BB35810C4CF2D7875897 /* Pods-ZeitSatTrackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		1BB22B20A730EE3BF5FF0688 /* Pods-ZeitSatTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
-		42C494F278B0EBBCC3C0E278 /* Pods_ZeitSatTrackDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrackDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack.release.xcconfig"; sourceTree = "<group>"; };
-		7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B7AD6F51EDA045A008A4A28 /* ZeitSatTrackDemo-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZeitSatTrackDemo-bridging-header.h"; sourceTree = "<group>"; };
+		8B7AD6F61EDA1092008A4A28 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		8B7AD6F91EDA10A7008A4A28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8B7AD6FB1EDA10B0008A4A28 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		8B7AD6FD1EDA10B8008A4A28 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		8B7AD6FF1EDA1162008A4A28 /* WhirlyGlobeMaplyComponent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WhirlyGlobeMaplyComponent.xcodeproj; path = "libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobe-MaplyComponent/WhirlyGlobeMaplyComponent.xcodeproj"; sourceTree = "<group>"; };
+		8B7AD7091EDA116F008A4A28 /* libWhirlyGlobeLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWhirlyGlobeLib.a; path = "libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobeLib/build/Debug-iphoneos/libWhirlyGlobeLib.a"; sourceTree = "<group>"; };
 		8B9C2A031EC6D32100C7795A /* ZeitSatTrackDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeitSatTrackDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A171EC6D32100C7795A /* ZeitSatTrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeitSatTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A1B1EC6D32100C7795A /* ZeitSatTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitSatTrackUITests.swift; sourceTree = "<group>"; };
@@ -111,11 +134,7 @@
 		8BCB54441ED69A420035C9CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BCB54451ED69A420035C9CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BCB54461ED69A420035C9CD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A52E1AD9647CDD4F924AE42B /* Pods-ZeitSatTrackDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		CD0D44B601C8B46BF98FBCEA /* Pods-ZeitSatTrackDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo.release.xcconfig"; sourceTree = "<group>"; };
-		D0155D1DF40A6728D0ABF108 /* Pods-ZeitSatTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack.debug.xcconfig"; sourceTree = "<group>"; };
-		D2D83CBCEBFEF7BB8D27DD03 /* Pods-ZeitSatTrackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests.release.xcconfig"; sourceTree = "<group>"; };
-		DE504BC68D0EE1B3E7D9A71A /* Pods_ZeitSatTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BEAA6871EDA2F4400356CD9 /* geography-class_medres.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = "geography-class_medres.mbtiles"; path = "libs/WhirlyGlobeMaply/resources/base_maps/geography-class_medres.mbtiles"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +142,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7AD70B1EDA11ED008A4A28 /* WhirlyGlobeMaplyComponent.framework in Frameworks */,
+				8B7AD6FE1EDA10B8008A4A28 /* libsqlite3.tbd in Frameworks */,
+				8B7AD6FC1EDA10B0008A4A28 /* libxml2.tbd in Frameworks */,
+				8B7AD6FA1EDA10A7008A4A28 /* libz.tbd in Frameworks */,
+				8B7AD6F81EDA109E008A4A28 /* CoreLocation.framework in Frameworks */,
+				8B7AD6F71EDA1092008A4A28 /* libstdc++.tbd in Frameworks */,
 				8BA659AE1ED400D200EBFDD1 /* ZeitSatTrack.framework in Frameworks */,
-				357CBB13270AA0939A5C9D2A /* Pods_ZeitSatTrackDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				565F0A2C010F161E78B26ED8 /* Pods_ZeitSatTrackUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +165,6 @@
 			files = (
 				8BA659C41ED4DB4500EBFDD1 /* CoreLocation.framework in Frameworks */,
 				8BA659C21ED4DB3B00EBFDD1 /* Foundation.framework in Frameworks */,
-				2A67AC6C587FC063DD901586 /* Pods_ZeitSatTrack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,26 +173,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA659A21ED400D200EBFDD1 /* ZeitSatTrack.framework in Frameworks */,
-				C7939D6FF480E1672A8B008A /* Pods_ZeitSatTrackTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1ECAE31EEF3B353E662B7E96 /* Pods */ = {
+		8B7AD7001EDA1162008A4A28 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0155D1DF40A6728D0ABF108 /* Pods-ZeitSatTrack.debug.xcconfig */,
-				5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */,
-				A52E1AD9647CDD4F924AE42B /* Pods-ZeitSatTrackDemo.debug.xcconfig */,
-				CD0D44B601C8B46BF98FBCEA /* Pods-ZeitSatTrackDemo.release.xcconfig */,
-				1BB22B20A730EE3BF5FF0688 /* Pods-ZeitSatTrackTests.debug.xcconfig */,
-				83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */,
-				0280BB35810C4CF2D7875897 /* Pods-ZeitSatTrackUITests.debug.xcconfig */,
-				D2D83CBCEBFEF7BB8D27DD03 /* Pods-ZeitSatTrackUITests.release.xcconfig */,
+				8B7AD7061EDA1163008A4A28 /* WhirlyGlobeMaplyComponent.framework */,
+				8B7AD7081EDA1163008A4A28 /* WhirlyGlobeMaplyComponentTests.xctest */,
 			);
-			name = Pods;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		8B9C29FA1EC6D32100C7795A = {
@@ -181,10 +196,10 @@
 				8B9C2A1A1EC6D32100C7795A /* ZeitSatTrackUITests */,
 				8BA6599A1ED400D100EBFDD1 /* ZeitSatTrackLib */,
 				8BA659A71ED400D200EBFDD1 /* ZeitSatTrackTests */,
+				8BEAA6861EDA2F2400356CD9 /* Resources */,
 				8B9C2A041EC6D32100C7795A /* Products */,
 				8BA659BE1ED4B6E100EBFDD1 /* satellite-tle-sources.json */,
 				8BA659C01ED4DB3B00EBFDD1 /* Frameworks */,
-				1ECAE31EEF3B353E662B7E96 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,12 +257,14 @@
 		8BA659C01ED4DB3B00EBFDD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B7AD7091EDA116F008A4A28 /* libWhirlyGlobeLib.a */,
+				8B7AD6FF1EDA1162008A4A28 /* WhirlyGlobeMaplyComponent.xcodeproj */,
+				8B7AD6FD1EDA10B8008A4A28 /* libsqlite3.tbd */,
+				8B7AD6FB1EDA10B0008A4A28 /* libxml2.tbd */,
+				8B7AD6F91EDA10A7008A4A28 /* libz.tbd */,
+				8B7AD6F61EDA1092008A4A28 /* libstdc++.tbd */,
 				8BA659C31ED4DB4500EBFDD1 /* CoreLocation.framework */,
 				8BA659C11ED4DB3B00EBFDD1 /* Foundation.framework */,
-				7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */,
-				42C494F278B0EBBCC3C0E278 /* Pods_ZeitSatTrackDemo.framework */,
-				00C11213FB611FEDC7E82065 /* Pods_ZeitSatTrackTests.framework */,
-				DE504BC68D0EE1B3E7D9A71A /* Pods_ZeitSatTrackUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,6 +281,14 @@
 				8BCB54461ED69A420035C9CD /* ViewController.swift */,
 			);
 			path = ZeitSatTrackDemo;
+			sourceTree = "<group>";
+		};
+		8BEAA6861EDA2F2400356CD9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8BEAA6871EDA2F4400356CD9 /* geography-class_medres.mbtiles */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,17 +309,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B9C2A201EC6D32100C7795A /* Build configuration list for PBXNativeTarget "ZeitSatTrackDemo" */;
 			buildPhases = (
-				25327C8EEAE55317E21F9A7D /* [CP] Check Pods Manifest.lock */,
 				8B9C29FF1EC6D32100C7795A /* Sources */,
 				8B9C2A001EC6D32100C7795A /* Frameworks */,
 				8B9C2A011EC6D32100C7795A /* Resources */,
 				8BA659B31ED400D200EBFDD1 /* Embed Frameworks */,
-				25B7CC17E3E659C04908CF8C /* [CP] Embed Pods Frameworks */,
-				B4C4D73BDC584AC0658F5972 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8B7AD70D1EDA14E7008A4A28 /* PBXTargetDependency */,
 				8BA659AD1ED400D200EBFDD1 /* PBXTargetDependency */,
 			);
 			name = ZeitSatTrackDemo;
@@ -327,12 +350,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BA659B01ED400D200EBFDD1 /* Build configuration list for PBXNativeTarget "ZeitSatTrack" */;
 			buildPhases = (
-				351E23C04A944ADE85A0806C /* [CP] Check Pods Manifest.lock */,
 				8BA659941ED400D100EBFDD1 /* Sources */,
 				8BA659951ED400D100EBFDD1 /* Frameworks */,
 				8BA659961ED400D100EBFDD1 /* Headers */,
 				8BA659971ED400D100EBFDD1 /* Resources */,
-				0DB127FA9F8B193FFDB73A1A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,6 +431,12 @@
 			mainGroup = 8B9C29FA1EC6D32100C7795A;
 			productRefGroup = 8B9C2A041EC6D32100C7795A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8B7AD7001EDA1162008A4A28 /* Products */;
+					ProjectRef = 8B7AD6FF1EDA1162008A4A28 /* WhirlyGlobeMaplyComponent.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8B9C2A021EC6D32100C7795A /* ZeitSatTrackDemo */,
@@ -420,6 +447,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		8B7AD7061EDA1163008A4A28 /* WhirlyGlobeMaplyComponent.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WhirlyGlobeMaplyComponent.framework;
+			remoteRef = 8B7AD7051EDA1163008A4A28 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B7AD7081EDA1163008A4A28 /* WhirlyGlobeMaplyComponentTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WhirlyGlobeMaplyComponentTests.xctest;
+			remoteRef = 8B7AD7071EDA1163008A4A28 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		8B9C2A011EC6D32100C7795A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -427,6 +471,7 @@
 			files = (
 				8BCB544B1ED69A420035C9CD /* Info.plist in Resources */,
 				8BCB544A1ED69A420035C9CD /* Main.storyboard in Resources */,
+				8BEAA6881EDA2F4400356CD9 /* geography-class_medres.mbtiles in Resources */,
 				8BCB54481ED69A420035C9CD /* Assets.xcassets in Resources */,
 				8BCB54491ED69A420035C9CD /* LaunchScreen.storyboard in Resources */,
 			);
@@ -457,67 +502,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0DB127FA9F8B193FFDB73A1A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		25327C8EEAE55317E21F9A7D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		25B7CC17E3E659C04908CF8C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2631C9FF08F74EF4FE3F632E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		351E23C04A944ADE85A0806C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,21 +545,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4C4D73BDC584AC0658F5972 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DCBE9696B2C416A402CD8560 /* [CP] Embed Pods Frameworks */ = {
@@ -665,6 +635,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8B7AD70D1EDA14E7008A4A28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WhirlyGlobeMaplyComponent;
+			targetProxy = 8B7AD70C1EDA14E7008A4A28 /* PBXContainerItemProxy */;
+		};
 		8B9C2A191EC6D32100C7795A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8B9C2A021EC6D32100C7795A /* ZeitSatTrackDemo */;
@@ -804,67 +779,54 @@
 		};
 		8B9C2A211EC6D32100C7795A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A52E1AD9647CDD4F924AE42B /* Pods-ZeitSatTrackDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
 				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/eigen\"",
-					"\"${PODS_ROOT}/clipper\"",
-					"\"$(SDKROOT)/usr/include/libxml2\"",
-					"\"${PODS_ROOT}/clipper/\"",
-					"$(PODS_ROOT)/eigen",
+					"\"$(SRCROOT)/libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobe-MaplyComponent/include/\"\n",
 					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/WhirlyGlobeResources\"",
-					"\"${PODS_ROOT}/Headers/Public/eigen\"",
-					"\"$${PODS_ROOT}/WhirlyGlobe\"",
-					"\"${PODS_ROOT}/WhirlyGlobe/MaplyComponent-Headers/\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ZeitSatTrackDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobeLib/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeitgeist.ZeitSatTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/ZeitSatTrackDemo-bridging-header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobe-MaplyComponent/include/MaplyBridge.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		8B9C2A221EC6D32100C7795A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD0D44B601C8B46BF98FBCEA /* Pods-ZeitSatTrackDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
 				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/eigen\"",
-					"\"${PODS_ROOT}/clipper\"",
-					"\"$(SDKROOT)/usr/include/libxml2\"",
-					"\"${PODS_ROOT}/clipper/\"",
-					"$(PODS_ROOT)/eigen",
+					"\"$(SRCROOT)/libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobe-MaplyComponent/include/\"\n",
 					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/WhirlyGlobeResources\"",
-					"\"${PODS_ROOT}/Headers/Public/eigen\"",
-					"\"$${PODS_ROOT}/WhirlyGlobe\"",
-					"\"${PODS_ROOT}/WhirlyGlobe/MaplyComponent-Headers/\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ZeitSatTrackDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobeLib/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeitgeist.ZeitSatTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "ZeitSatTrackDemo/ZeitSatTrackDemo-bridging-header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/libs/WhirlyGlobeMaply/WhirlyGlobeSrc/WhirlyGlobe-MaplyComponent/include/MaplyBridge.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		8B9C2A241EC6D32100C7795A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0280BB35810C4CF2D7875897 /* Pods-ZeitSatTrackUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
@@ -879,7 +841,6 @@
 		};
 		8B9C2A251EC6D32100C7795A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2D83CBCEBFEF7BB8D27DD03 /* Pods-ZeitSatTrackUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
@@ -894,7 +855,6 @@
 		};
 		8BA659B11ED400D200EBFDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0155D1DF40A6728D0ABF108 /* Pods-ZeitSatTrack.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -917,7 +877,6 @@
 		};
 		8BA659B21ED400D200EBFDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -940,7 +899,6 @@
 		};
 		8BA659B51ED400D200EBFDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BB22B20A730EE3BF5FF0688 /* Pods-ZeitSatTrackTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
@@ -955,7 +913,6 @@
 		};
 		8BA659B61ED400D200EBFDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
