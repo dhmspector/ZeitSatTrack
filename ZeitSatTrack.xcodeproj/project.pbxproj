@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A67AC6C587FC063DD901586 /* Pods_ZeitSatTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */; };
+		357CBB13270AA0939A5C9D2A /* Pods_ZeitSatTrackDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C494F278B0EBBCC3C0E278 /* Pods_ZeitSatTrackDemo.framework */; };
+		565F0A2C010F161E78B26ED8 /* Pods_ZeitSatTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE504BC68D0EE1B3E7D9A71A /* Pods_ZeitSatTrackUITests.framework */; };
 		8B9C2A1C1EC6D32100C7795A /* ZeitSatTrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9C2A1B1EC6D32100C7795A /* ZeitSatTrackUITests.swift */; };
 		8BA659A21ED400D200EBFDD1 /* ZeitSatTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA659991ED400D100EBFDD1 /* ZeitSatTrack.framework */; };
 		8BA659A91ED400D200EBFDD1 /* ZeitSatTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA659A81ED400D200EBFDD1 /* ZeitSatTrackTests.swift */; };
@@ -27,6 +30,7 @@
 		8BCB544A1ED69A420035C9CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCB54431ED69A420035C9CD /* Main.storyboard */; };
 		8BCB544B1ED69A420035C9CD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BCB54451ED69A420035C9CD /* Info.plist */; };
 		8BCB544C1ED69A420035C9CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB54461ED69A420035C9CD /* ViewController.swift */; };
+		C7939D6FF480E1672A8B008A /* Pods_ZeitSatTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C11213FB611FEDC7E82065 /* Pods_ZeitSatTrackTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00C11213FB611FEDC7E82065 /* Pods_ZeitSatTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0280BB35810C4CF2D7875897 /* Pods-ZeitSatTrackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1BB22B20A730EE3BF5FF0688 /* Pods-ZeitSatTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		42C494F278B0EBBCC3C0E278 /* Pods_ZeitSatTrackDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrackDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack.release.xcconfig"; sourceTree = "<group>"; };
+		7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B9C2A031EC6D32100C7795A /* ZeitSatTrackDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeitSatTrackDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A171EC6D32100C7795A /* ZeitSatTrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeitSatTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C2A1B1EC6D32100C7795A /* ZeitSatTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitSatTrackUITests.swift; sourceTree = "<group>"; };
@@ -99,6 +110,11 @@
 		8BCB54441ED69A420035C9CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BCB54451ED69A420035C9CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BCB54461ED69A420035C9CD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A52E1AD9647CDD4F924AE42B /* Pods-ZeitSatTrackDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		CD0D44B601C8B46BF98FBCEA /* Pods-ZeitSatTrackDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D0155D1DF40A6728D0ABF108 /* Pods-ZeitSatTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack.debug.xcconfig"; sourceTree = "<group>"; };
+		D2D83CBCEBFEF7BB8D27DD03 /* Pods-ZeitSatTrackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeitSatTrackUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DE504BC68D0EE1B3E7D9A71A /* Pods_ZeitSatTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZeitSatTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA659AE1ED400D200EBFDD1 /* ZeitSatTrack.framework in Frameworks */,
+				357CBB13270AA0939A5C9D2A /* Pods_ZeitSatTrackDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565F0A2C010F161E78B26ED8 /* Pods_ZeitSatTrackUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +141,7 @@
 			files = (
 				8BA659C41ED4DB4500EBFDD1 /* CoreLocation.framework in Frameworks */,
 				8BA659C21ED4DB3B00EBFDD1 /* Foundation.framework in Frameworks */,
+				2A67AC6C587FC063DD901586 /* Pods_ZeitSatTrack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,12 +150,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA659A21ED400D200EBFDD1 /* ZeitSatTrack.framework in Frameworks */,
+				C7939D6FF480E1672A8B008A /* Pods_ZeitSatTrackTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1ECAE31EEF3B353E662B7E96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0155D1DF40A6728D0ABF108 /* Pods-ZeitSatTrack.debug.xcconfig */,
+				5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */,
+				A52E1AD9647CDD4F924AE42B /* Pods-ZeitSatTrackDemo.debug.xcconfig */,
+				CD0D44B601C8B46BF98FBCEA /* Pods-ZeitSatTrackDemo.release.xcconfig */,
+				1BB22B20A730EE3BF5FF0688 /* Pods-ZeitSatTrackTests.debug.xcconfig */,
+				83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */,
+				0280BB35810C4CF2D7875897 /* Pods-ZeitSatTrackUITests.debug.xcconfig */,
+				D2D83CBCEBFEF7BB8D27DD03 /* Pods-ZeitSatTrackUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8B9C29FA1EC6D32100C7795A = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +183,7 @@
 				8B9C2A041EC6D32100C7795A /* Products */,
 				8BA659BE1ED4B6E100EBFDD1 /* satellite-tle-sources.json */,
 				8BA659C01ED4DB3B00EBFDD1 /* Frameworks */,
+				1ECAE31EEF3B353E662B7E96 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -207,6 +243,10 @@
 			children = (
 				8BA659C31ED4DB4500EBFDD1 /* CoreLocation.framework */,
 				8BA659C11ED4DB3B00EBFDD1 /* Foundation.framework */,
+				7D8637E2C841CDF79B0C52D8 /* Pods_ZeitSatTrack.framework */,
+				42C494F278B0EBBCC3C0E278 /* Pods_ZeitSatTrackDemo.framework */,
+				00C11213FB611FEDC7E82065 /* Pods_ZeitSatTrackTests.framework */,
+				DE504BC68D0EE1B3E7D9A71A /* Pods_ZeitSatTrackUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,10 +282,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B9C2A201EC6D32100C7795A /* Build configuration list for PBXNativeTarget "ZeitSatTrackDemo" */;
 			buildPhases = (
+				25327C8EEAE55317E21F9A7D /* [CP] Check Pods Manifest.lock */,
 				8B9C29FF1EC6D32100C7795A /* Sources */,
 				8B9C2A001EC6D32100C7795A /* Frameworks */,
 				8B9C2A011EC6D32100C7795A /* Resources */,
 				8BA659B31ED400D200EBFDD1 /* Embed Frameworks */,
+				25B7CC17E3E659C04908CF8C /* [CP] Embed Pods Frameworks */,
+				B4C4D73BDC584AC0658F5972 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,9 +304,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B9C2A231EC6D32100C7795A /* Build configuration list for PBXNativeTarget "ZeitSatTrackUITests" */;
 			buildPhases = (
+				EACA836B8962822D41D7D20C /* [CP] Check Pods Manifest.lock */,
 				8B9C2A131EC6D32100C7795A /* Sources */,
 				8B9C2A141EC6D32100C7795A /* Frameworks */,
 				8B9C2A151EC6D32100C7795A /* Resources */,
+				DCBE9696B2C416A402CD8560 /* [CP] Embed Pods Frameworks */,
+				98AA9C49205DA6216DE7F204 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,10 +325,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BA659B01ED400D200EBFDD1 /* Build configuration list for PBXNativeTarget "ZeitSatTrack" */;
 			buildPhases = (
+				351E23C04A944ADE85A0806C /* [CP] Check Pods Manifest.lock */,
 				8BA659941ED400D100EBFDD1 /* Sources */,
 				8BA659951ED400D100EBFDD1 /* Frameworks */,
 				8BA659961ED400D100EBFDD1 /* Headers */,
 				8BA659971ED400D100EBFDD1 /* Resources */,
+				0DB127FA9F8B193FFDB73A1A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -297,9 +345,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BA659B41ED400D200EBFDD1 /* Build configuration list for PBXNativeTarget "ZeitSatTrackTests" */;
 			buildPhases = (
+				2631C9FF08F74EF4FE3F632E /* [CP] Check Pods Manifest.lock */,
 				8BA6599D1ED400D100EBFDD1 /* Sources */,
 				8BA6599E1ED400D100EBFDD1 /* Frameworks */,
 				8BA6599F1ED400D100EBFDD1 /* Resources */,
+				36ECA46EB4CB0CE34C6B7D03 /* [CP] Embed Pods Frameworks */,
+				E3624E92E223300876972B05 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -402,6 +453,174 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DB127FA9F8B193FFDB73A1A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrack/Pods-ZeitSatTrack-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25327C8EEAE55317E21F9A7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		25B7CC17E3E659C04908CF8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2631C9FF08F74EF4FE3F632E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		351E23C04A944ADE85A0806C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		36ECA46EB4CB0CE34C6B7D03 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98AA9C49205DA6216DE7F204 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4C4D73BDC584AC0658F5972 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackDemo/Pods-ZeitSatTrackDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCBE9696B2C416A402CD8560 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackUITests/Pods-ZeitSatTrackUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3624E92E223300876972B05 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZeitSatTrackTests/Pods-ZeitSatTrackTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EACA836B8962822D41D7D20C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B9C29FF1EC6D32100C7795A /* Sources */ = {
@@ -583,6 +802,7 @@
 		};
 		8B9C2A211EC6D32100C7795A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A52E1AD9647CDD4F924AE42B /* Pods-ZeitSatTrackDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -597,6 +817,7 @@
 		};
 		8B9C2A221EC6D32100C7795A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD0D44B601C8B46BF98FBCEA /* Pods-ZeitSatTrackDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -611,6 +832,7 @@
 		};
 		8B9C2A241EC6D32100C7795A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0280BB35810C4CF2D7875897 /* Pods-ZeitSatTrackUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
@@ -625,6 +847,7 @@
 		};
 		8B9C2A251EC6D32100C7795A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2D83CBCEBFEF7BB8D27DD03 /* Pods-ZeitSatTrackUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
@@ -639,6 +862,7 @@
 		};
 		8BA659B11ED400D200EBFDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0155D1DF40A6728D0ABF108 /* Pods-ZeitSatTrack.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -661,6 +885,7 @@
 		};
 		8BA659B21ED400D200EBFDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5919CC936ACF2CA6953B1B66 /* Pods-ZeitSatTrack.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -683,6 +908,7 @@
 		};
 		8BA659B51ED400D200EBFDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BB22B20A730EE3BF5FF0688 /* Pods-ZeitSatTrackTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;
@@ -697,6 +923,7 @@
 		};
 		8BA659B61ED400D200EBFDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B3313554282C0100F310FA /* Pods-ZeitSatTrackTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = YSHJQA6U2L;

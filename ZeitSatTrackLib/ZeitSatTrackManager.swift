@@ -139,6 +139,19 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return rv
     }
 
+    
+    /// Stop observing all satellites
+    open func stopObservingAllSatellites() {
+        if self.observedSatellites.count > 0 {
+            self.updateTimer?.invalidate()
+            self.updateTimer = nil
+            self.observedSatellites.removeAll()
+        }
+    }
+
+    // MARK: Delegate Support
+
+    /// fetch positions for delivery to delegates
     func postionsForObservedSatellites() {
         var rv = [Dictionary<String, GeoCoordinates>]()
         
@@ -148,10 +161,13 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         }
         self.delegate?.didObserveSatellites(satelliteList: rv)
     }
+
     
+    /// Strart timer/handler for auto update mode
     func startUpdateTimer() {
         self.updateTimer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(postionsForObservedSatellites), userInfo: nil, repeats: true)
     }
+    // MARK: End Delegate Support
     
     
     // MARK: Satellite Location API
@@ -219,6 +235,8 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         }
         return rv
     }
+
+    
 
     
     /// return detailed orbital info for a satellite

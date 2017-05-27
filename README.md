@@ -150,7 +150,7 @@ This property is in _seconds_.  Setting it to less than 1 second can have advers
 Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, satellites can be queried to determine their positions by calling:
 
 ```swift
-func locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
+locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
 ```
 Which returns the location for a singe named satellite, or 
 
@@ -168,7 +168,7 @@ Both calls returns an array of dictionaries with location info for all satellite
 
 ## Observing Multiple Satellites
 
-_ZeitSatTrack_ has the ability to watch a number of satellites simultaneously and support 2 methods to add and remove satellite for observation:
+_ZeitSatTrack_ has the ability to watch a number of satellites simultaneously. There are 2 methods to add and remove satellite for observation:
 
 ```swift
 func startObservingSatelliteNamed( _ name: String) -> Bool
@@ -178,19 +178,21 @@ func startObservingSatelliteNamed( _ name: String) -> Bool
 func stopObservingSatelliteNamed( _ name: String) -> Bool
 ```
 
-In either case, a result of `true` indicates the named satellite has been added (or removed) from the watch list.  A `false` result means the named satellite was not found(or not being observed).
+In either case, a result of `true` indicates the named satellite has been added (or removed) from the watch list.  A result of `false` means the named satellite was not found (or was not being observed).
 
-```swift
-func stopObservingAllSatellite()
-```
+The number of satellites being observed is stored in a property
 
-Will remove all satellite from observation.
-
-Lastly, the number of satellites being observed is stored in the property
 ```swift
 observedCount
 ```
+</br>
 > See [ZeitSatTrack Delegate](#ZeitSatTrack-Delegate) for more on receiving automatic updates of observed satellites.
+
+ Lastly, to remove all observed sats, call
+
+```swift
+stopObservingAllSatellites()
+```
 
 
 ### Position Data
@@ -227,7 +229,7 @@ Other information about the orbital status of the satellite can be obtained by c
 ```swift
 let orbitalInfo = satTracker.orbitalInfoForSatelliteNamed("NOAA 18", location: CLLocation(latitude: 37.780129, longitude: -122.392033))
 ```
-Which will return a dictionary containing various orbital parameters that could be useful in visualizing the satellite's path, or locating the satellite visually from the ground.
+which will return a dictionary containing various orbital parameters that could be useful in visualizing the satellite's path, or locating the satellite visually from the ground.
 
 > *Note*: if the `location` parameter is not supplied it is assumed to be available from the `location` property in the _ZeitSatTrack_ manager.  
 
@@ -302,7 +304,11 @@ The data format for the _ZeitSatTrack_ data source file is a JSON file with an a
 ```
 
 If you wanted to add a new set of TLE groups for use with the library, creating a file such as then adding it at run-time using the method
-` adddTLESourcesFromFile(_ fileName:String, bundle: Bundle) ` 
+
+```swift
+ adddTLESourcesFromFile(_ fileName:String, bundle: Bundle) 
+ ``` 
+ 
 
 which will add all groups in the presented file to the list of available TLE sources. Individual subgroups in your data sources may be added to the available satellites known to the manager by calling:
 ```swift
