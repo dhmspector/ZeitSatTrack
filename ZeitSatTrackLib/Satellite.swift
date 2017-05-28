@@ -9,9 +9,9 @@ import CoreLocation
 import Foundation
 
 public struct GeoCoordinates {
-    var latitude: CLLocationDegrees
-    var longitude: CLLocationDegrees
-    var altitude: Double
+    public var latitude: CLLocationDegrees
+    public var longitude: CLLocationDegrees
+    public var altitude: Double
     
     public func description() -> String {
         return "Location (\(self.latitude), \(self.longitude)); Altitude: \(self.altitude) KM"
@@ -49,16 +49,19 @@ class Satellite {
     }
     
     func satellitePositionAt(date:Date) -> GeoCoordinates? {
-        
+        let userUserDates = false
         var currentSatellitePosition: GeoCoordinates?
 
         // @FIXME: Need to check the requested date against the TLE launch date -- if the req date is < lauchDate return empty coordiates
         
-        //let currentDate = JulianMath.secondsSinceReferenceDate
+        
+        let currentDate = JulianMath.secondsSinceReferenceDate()
         let tagetDate = JulianMath.julianDateFromDate(date: date)
-        let targetJulianDate = JulianMath.julianDateFromSecondsSinceReferenceDate(secondsSinceReferenceDate: tagetDate)
+        
+        let targetJulianDate = JulianMath.julianDateFromSecondsSinceReferenceDate(secondsSinceReferenceDate: userUserDates == true ? tagetDate : currentDate)
         let semimajorAxis: Double = self.twoLineElementSet!.semimajorAxis()     // kilometers
-        let currentMeanAnomaly = self.twoLineElementSet!.meanAnomalyForJulianDate(julianDate: targetJulianDate)
+        
+        let currentMeanAnomaly = self.twoLineElementSet!.meanAnomalyForJulianDate(julianDate: userUserDates == true ? tagetDate : currentDate)
         
         // Use the current Mean Anomaly to get the current Eccentric Anomaly
         let currentEccentricAnomaly = self.twoLineElementSet!.eccentricAnomalyForMeanAnomaly(meanAnomaly: currentMeanAnomaly)

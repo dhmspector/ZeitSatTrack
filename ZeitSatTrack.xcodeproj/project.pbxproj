@@ -34,6 +34,9 @@
 		8BCB544B1ED69A420035C9CD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BCB54451ED69A420035C9CD /* Info.plist */; };
 		8BCB544C1ED69A420035C9CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB54461ED69A420035C9CD /* ViewController.swift */; };
 		8BEAA6881EDA2F4400356CD9 /* geography-class_medres.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 8BEAA6871EDA2F4400356CD9 /* geography-class_medres.mbtiles */; };
+		8BEAA6A51EDA540800356CD9 /* starcatalog_orig.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BEAA6A31EDA540800356CD9 /* starcatalog_orig.txt */; };
+		8BEAA6A61EDA540800356CD9 /* starcatalog_short.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BEAA6A41EDA540800356CD9 /* starcatalog_short.txt */; };
+		8BEAAA8F1EDA8BA600356CD9 /* country_json_50m in Resources */ = {isa = PBXBuildFile; fileRef = 8BEAAA8E1EDA8BA600356CD9 /* country_json_50m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		8BCB54451ED69A420035C9CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BCB54461ED69A420035C9CD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8BEAA6871EDA2F4400356CD9 /* geography-class_medres.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; name = "geography-class_medres.mbtiles"; path = "libs/WhirlyGlobeMaply/resources/base_maps/geography-class_medres.mbtiles"; sourceTree = "<group>"; };
+		8BEAA6A31EDA540800356CD9 /* starcatalog_orig.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = starcatalog_orig.txt; path = libs/WhirlyGlobeMaply/resources/stars/starcatalog_orig.txt; sourceTree = "<group>"; };
+		8BEAA6A41EDA540800356CD9 /* starcatalog_short.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = starcatalog_short.txt; path = libs/WhirlyGlobeMaply/resources/stars/starcatalog_short.txt; sourceTree = "<group>"; };
+		8BEAAA8E1EDA8BA600356CD9 /* country_json_50m */ = {isa = PBXFileReference; lastKnownFileType = folder; name = country_json_50m; path = libs/WhirlyGlobeMaply/resources/vectors/country_json_50m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +292,9 @@
 		8BEAA6861EDA2F2400356CD9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8BEAAA8E1EDA8BA600356CD9 /* country_json_50m */,
+				8BEAA6A31EDA540800356CD9 /* starcatalog_orig.txt */,
+				8BEAA6A41EDA540800356CD9 /* starcatalog_short.txt */,
 				8BEAA6871EDA2F4400356CD9 /* geography-class_medres.mbtiles */,
 			);
 			name = Resources;
@@ -470,10 +479,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BCB544B1ED69A420035C9CD /* Info.plist in Resources */,
+				8BEAA6A61EDA540800356CD9 /* starcatalog_short.txt in Resources */,
 				8BCB544A1ED69A420035C9CD /* Main.storyboard in Resources */,
 				8BEAA6881EDA2F4400356CD9 /* geography-class_medres.mbtiles in Resources */,
 				8BCB54481ED69A420035C9CD /* Assets.xcassets in Resources */,
 				8BCB54491ED69A420035C9CD /* LaunchScreen.storyboard in Resources */,
+				8BEAAA8F1EDA8BA600356CD9 /* country_json_50m in Resources */,
+				8BEAA6A51EDA540800356CD9 /* starcatalog_orig.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

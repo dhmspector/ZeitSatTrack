@@ -44,8 +44,14 @@ public protocol ZeitSatTrackManagerDelegate : class {
   
     /// ZeitSatTrack satellite observer did return data
     ///
-    /// - Parameter satelliteList: An array of Dictionaries representing satellite positions
-    func didObserveSatellites(satelliteList: [Dictionary<String, GeoCoordinates>])
+    /// - Parameter satelliteList: A dictionary representing satellite positions
+    func didObserveSatellites(satelliteList: Dictionary<String, GeoCoordinates>)
+
+    
+    /// ZeitSatTrack satellite observer did remove satellites
+    ///
+    /// - Parameter names: an array of satellite names that were removed
+    func didRemoveObservedSatellitesNamed(_ names:[String])
 }
 
 open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
@@ -128,6 +134,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
             if let index = self.observedSatellites.index(of: name) {
                 self.observedSatellites.remove(at:index)
                 rv = true
+                self.delegate?.didRemoveObservedSatellitesNamed([name])
                 if self.observedSatellites.count == 0 {
                     // this is the first satellite - start the update timer/task
                     self.updateTimer?.invalidate()
@@ -145,6 +152,7 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         if self.observedSatellites.count > 0 {
             self.updateTimer?.invalidate()
             self.updateTimer = nil
+            self.delegate?.didRemoveObservedSatellitesNamed(self.observedSatellites)
             self.observedSatellites.removeAll()
         }
     }
@@ -153,11 +161,11 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
 
     /// fetch positions for delivery to delegates
     func postionsForObservedSatellites() {
-        var rv = [Dictionary<String, GeoCoordinates>]()
+        var rv = Dictionary<String, GeoCoordinates>()
         
         self.observedSatellites.forEach { (name) in
             let tmpPostion = self.locationForSatelliteNamed(name)
-            rv.append([name:tmpPostion!])
+            rv[name] = tmpPostion!
         }
         self.delegate?.didObserveSatellites(satelliteList: rv)
     }
