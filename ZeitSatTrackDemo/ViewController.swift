@@ -190,19 +190,23 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
     func didObserveSatellites(satelliteList: Dictionary<String, GeoCoordinates>) {
         //print("We got: \(satelliteList)")
         satelliteList.forEach { (dict) in
+
             let geoDict = dict.value
-            let tmpLocation = CLLocation(latitude: geoDict.latitude, longitude: geoDict.longitude)
-            if let thisMarker = self.mapMarkers[dict.key] {
-                self.update(marker: thisMarker, location: tmpLocation)
-                //print("Updated marker for \(dict.key) at \(tmpLocation)")
-            } else { // no marker - make a new one
-                let tmpMarker = self.newMarkerAt(location: tmpLocation, iamgeName: kSatelliteMarkerImage)
-                self.mapMarkers[dict.key] = tmpMarker
-                self.theViewC?.addScreenMarkers([tmpMarker as Any], desc: nil)
-                //print("Added marker for \(dict.key) at \(tmpLocation)")
-            }
+            print("\(dict.key) - \(geoDict.description())")
+            
+//            let tmpLocation = CLLocation(latitude: geoDict.latitude, longitude: geoDict.longitude)
+//            if let thisMarker = self.mapMarkers[dict.key] {
+//                self.update(marker: thisMarker, location: tmpLocation)
+//                //print("Updated marker for \(dict.key) at \(tmpLocation)")
+//            } else { // no marker - make a new one
+//                let tmpMarker = self.newMarkerAt(location: tmpLocation, iamgeName: kSatelliteMarkerImage)
+//                self.mapMarkers[dict.key] = tmpMarker
+//                self.theViewC?.addScreenMarkers([tmpMarker as Any], desc: nil)
+//                //print("Added marker for \(dict.key) at \(tmpLocation)")
+//            }
         }
     }
+    
     func didRemoveObservedSatellitesNamed(_ names: [String]) {
         names.forEach { (name) in
             // remove the marker
