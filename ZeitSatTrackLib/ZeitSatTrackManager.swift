@@ -325,6 +325,17 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return self.satellites.first(where: { $0.name == name }) != nil
     }
     
+    open func catalogNumberForSatNamed(_ name:String) -> Int? {
+        var rv: Int?
+        if let satellite = self.satellites.filter({ satellite in
+            return satellite.name == name
+        }).first {
+            rv = satellite.satCatNumber
+        }
+            return rv
+    }
+        
+
     
     
     // MARK: CLLocationManagerDelegate Delegates

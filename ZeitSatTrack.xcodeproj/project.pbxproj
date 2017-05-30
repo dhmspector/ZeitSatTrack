@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1BCBB21EDD1E2B006CF7C0 /* FullMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BCBB11EDD1E2B006CF7C0 /* FullMapViewController.swift */; };
 		8B7AD6F71EDA1092008A4A28 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD6F61EDA1092008A4A28 /* libstdc++.tbd */; };
 		8B7AD6F81EDA109E008A4A28 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA659C31ED4DB4500EBFDD1 /* CoreLocation.framework */; };
 		8B7AD6FA1EDA10A7008A4A28 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AD6F91EDA10A7008A4A28 /* libz.tbd */; };
@@ -106,6 +107,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B1BCBB11EDD1E2B006CF7C0 /* FullMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMapViewController.swift; sourceTree = "<group>"; };
 		8B7AD6F51EDA045A008A4A28 /* ZeitSatTrackDemo-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZeitSatTrackDemo-bridging-header.h"; sourceTree = "<group>"; };
 		8B7AD6F61EDA1092008A4A28 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		8B7AD6F91EDA10A7008A4A28 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -278,6 +280,7 @@
 		8BCB543E1ED69A420035C9CD /* ZeitSatTrackDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8B1BCBB11EDD1E2B006CF7C0 /* FullMapViewController.swift */,
 				8B7AD6F51EDA045A008A4A28 /* ZeitSatTrackDemo-bridging-header.h */,
 				8BCB543F1ED69A420035C9CD /* AppDelegate.swift */,
 				8BCB54401ED69A420035C9CD /* Assets.xcassets */,
@@ -613,6 +616,7 @@
 			files = (
 				8BCB544C1ED69A420035C9CD /* ViewController.swift in Sources */,
 				8BCB54471ED69A420035C9CD /* AppDelegate.swift in Sources */,
+				8B1BCBB21EDD1E2B006CF7C0 /* FullMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
