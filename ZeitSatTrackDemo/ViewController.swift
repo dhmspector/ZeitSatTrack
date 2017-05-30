@@ -46,6 +46,7 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
     // MARK: WhirlyGlobe setup and delegates
     func setupWhirlyGlobe() {
         theViewC = WhirlyGlobeViewController()
+        //theViewC = MaplyViewController()
         
         self.view.addSubview(theViewC!.view)
         theViewC!.view.frame = self.view.bounds
@@ -168,16 +169,13 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
         tmpMarker.layoutImportance = MAXFLOAT
         tmpMarker.selectable = false
         tmpMarker.loc = maplyLoc
+        
+        self.theViewC?.startChanges()
         self.theViewC?.addScreenMarkers([tmpMarker], desc: nil)
+        self.theViewC?.endChanges()
         return tmpMarker
     }
     
-    func update(marker:MaplyScreenMarker, location:CLLocation) {
-        //self.theViewC?.remove([marker], mode: MaplyThreadMode.current)
-        self.theViewC?.remove([marker])
-        marker.loc =  MaplyCoordinateMakeWithDegrees(Float(location.coordinate.longitude), Float(location.coordinate.latitude))
-        self.theViewC?.addScreenMarkers([marker as Any], desc: nil)
-    }
 
     
     
@@ -188,18 +186,23 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
         //print("We got: \(satelliteList)")
         satelliteList.forEach { (dict) in
             let geoDict = dict.value
-            print("\(dict.key) - \(geoDict.description())")
-            
             let tmpLocation = CLLocation(latitude: geoDict.latitude, longitude: geoDict.longitude)
+            print ("\(dict.key) - \(geoDict)")
+            
             if let thisMarker = self.mapMarkers[dict.key] {
-                self.update(marker: thisMarker, location: tmpLocation)
-                //print("Updated marker for \(dict.key) at \(tmpLocation)")
+//                self.theViewC?.startChanges()
+//                self.theViewC?.remove([thisMarker]) // out with the old
+//                self.theViewC?.endChanges()
+                
+                let tmpMarker = self.newMarkerAt(location: tmpLocation, iamgeName: kSatelliteMarkerImage)
+                self.mapMarkers[dict.key] = tmpMarker // in with the new
             } else { // no marker - make a new one
                 let tmpMarker = self.newMarkerAt(location: tmpLocation, iamgeName: kSatelliteMarkerImage)
                 self.mapMarkers[dict.key] = tmpMarker
-                //print("Added marker for \(dict.key) at \(tmpLocation)")
             }
+            
         }
+
     }
     
     func didRemoveObservedSatellitesNamed(_ names: [String]) {
