@@ -48,6 +48,9 @@ class TwoLineElementSet {
     var meanMotion:             Double = 0.0                                // The number of orbits the satellite completes in a day
     var revolutionNumber:       Int = 0
     
+    var launchYear:             Int = 0
+
+    
     convenience init(nameOfSatellite: String, lineOne: String, lineTwo:String) {
         self.init()
         
@@ -58,22 +61,17 @@ class TwoLineElementSet {
     // 1 25544U 98067A   14332.12480567  .00017916  00000-0  30378-3 0  4720
     // 2 25544  51.6474   6.7919 0007352  75.3130 346.0866 15.51558891916767
 
-        self.nameOfSatellite = nameOfSatellite
-        //print("Sat name \(self.nameOfSatellite)")
         
-        //print("line 1: \"\(lineOne.trimmingCharacters(in: CharacterSet.newlines))\"")
-
+        self.nameOfSatellite = nameOfSatellite
         let satCatNumberOffset = 2
         let satCatNumberLength = (satCatNumberOffset + 5) - 1
         let tmpCatNumberString = lineOne[satCatNumberOffset..<satCatNumberLength]
-        satcatNumber = Int(tmpCatNumberString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("tmpCatNumberString \"\(tmpCatNumberString)\"")
+        self.satcatNumber = Int(tmpCatNumberString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
         let launchYearStringOffset = 9
         let launchYearStringLength = (launchYearStringOffset + 2) - 1
         let launchYearString = lineOne[launchYearStringOffset..<launchYearStringLength]
-        var launchYear = Int(launchYearString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("launchYearString \"\(launchYearString)\"")
+        self.launchYear = Int(launchYearString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
         if 57 > launchYear {
             launchYear += 2000;
@@ -82,76 +80,64 @@ class TwoLineElementSet {
         }
         
         let launchSequentialIdentiferOffset = 11
-        let launchSequentialIdentiferLength = (launchYearStringOffset + 4) - 1
+        let launchSequentialIdentiferLength = (launchYearStringOffset + 4)
         let launchSequentialIdentiferString = lineOne[launchSequentialIdentiferOffset..<launchSequentialIdentiferLength]
         
-        cosparID = "\(launchYear)-\(launchSequentialIdentiferString.trimmingCharacters(in: CharacterSet.whitespaces))"
-        //print("launchSequentialIdentiferString \"\(launchSequentialIdentiferString)\" cosparID \"\(cosparID)\" ")
-        
+        self.cosparID = "\(launchYear)-\(launchSequentialIdentiferString.trimmingCharacters(in: CharacterSet.whitespaces))"
         
         let epochYearOffset = 18
         let epochYearLength = (epochYearOffset + 2) - 1
         let epochYearString = lineOne[epochYearOffset..<epochYearLength]
-        var epochYear = Int(epochYearString.trimmingCharacters(in: CharacterSet.whitespaces))
-        //print("epochYearString \"\(epochYearString)\"")
+        self.epochYear = Int(epochYearString.trimmingCharacters(in: CharacterSet.whitespaces))!
+
         
-        if (epochYear! >= 57) {
-            epochYear = epochYear! + 1900;
+        if (epochYear >= 57) {
+            epochYear = epochYear + 1900;
         } else {
-            epochYear = epochYear! + 2000;
+            epochYear = epochYear + 2000;
         }
         
         
         let epochJulianDateFractionOffset = 20
-        let epochJulianDateFractionLength = (epochJulianDateFractionOffset + 12) - 1
+        let epochJulianDateFractionLength = (epochJulianDateFractionOffset + 12)
         let epochJulianDateFractionString = lineOne[epochJulianDateFractionOffset..<epochJulianDateFractionLength]
-        epochJulianDateFraction = Double(epochJulianDateFractionString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("epochJulianDateFractionString \"\(epochJulianDateFractionString)\"")
+        self.epochJulianDateFraction = Double(epochJulianDateFractionString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
-        let inclinationOffset = 9 // was 8
-        let inclinationLength = (inclinationOffset + 8) - 1
+        let inclinationOffset = 8
+        let inclinationLength = (inclinationOffset + 8)
         let inclinationString = lineTwo[inclinationOffset..<inclinationLength]
-        inclination = Double(inclinationString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("inclinationString \"\(inclinationString)\"")
-        
+        self.inclination = Double(inclinationString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
         let rightAscensionOfTheAscendingNodeOffset = 17
         let rightAscensionOfTheAscendingNodeLength = (rightAscensionOfTheAscendingNodeOffset + 7)
         let rightAscensionOfTheAscendingNodeString = lineTwo[rightAscensionOfTheAscendingNodeOffset..<rightAscensionOfTheAscendingNodeLength]
         rightAscensionOfTheAscendingNode = Double(rightAscensionOfTheAscendingNodeString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("rightAscensionOfTheAscendingNodeString \"\(rightAscensionOfTheAscendingNodeString)\"")
         
         let eccentricityStringOffset = 26
-        let eccentricityStringLength = (eccentricityStringOffset + 7)  - 1
+        let eccentricityStringLength = (eccentricityStringOffset + 7)
         let eccentricityString = lineTwo[eccentricityStringOffset..<eccentricityStringLength]
         let eccentricityStringAsDouble = "0.\(eccentricityString.trimmingCharacters(in: CharacterSet.whitespaces))"
-        eccentricity = Double(eccentricityStringAsDouble)!
-        //print("eccentricityString \"\(eccentricityString)\"  eccentricityStringAsDouble  \"\(eccentricityStringAsDouble)\" ")
+        self.eccentricity = Double(eccentricityStringAsDouble)!
         
         let argumentOfPerigeeOffset = 34
         let argumentOfPerigeeLength = (argumentOfPerigeeOffset + 8)
         let arguementOfPerigeeString = lineTwo[argumentOfPerigeeOffset..<argumentOfPerigeeLength]
-        argumentOfPerigee = Double(arguementOfPerigeeString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("arguementOfPerigeeString \"\(arguementOfPerigeeString)\"")
+        self.argumentOfPerigee = Double(arguementOfPerigeeString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
         let meanAnomalyOffset = 43
-        let meanAnomalyLength = (meanAnomalyOffset + 8) - 1
+        let meanAnomalyLength = (meanAnomalyOffset + 8)
         let meanAnomalyString = lineTwo[meanAnomalyOffset..<meanAnomalyLength]
-        meanAnomaly = Double(meanAnomalyString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("meanAnomolyString \"\(meanAnomalyString)\"")
+        self.meanAnomaly = Double(meanAnomalyString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
         let meanMotionOffset = 52
-        let meanMotionLength = (meanMotionOffset + 11) - 1
+        let meanMotionLength = (meanMotionOffset + 11)
         let meanMotionString = lineTwo[meanMotionOffset..<meanMotionLength]
-        meanMotion = Double(meanMotionString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("meanMotionString \"\(meanMotionString)\"")
+        self.meanMotion = Double(meanMotionString.trimmingCharacters(in: CharacterSet.whitespaces))!
         
         let revolutionNumberOffset = 63
-        let revolutionNumberLength = (revolutionNumberOffset + 5)
+        let revolutionNumberLength = (revolutionNumberOffset + 5) - 1
         let revolutionNumberString = lineTwo[revolutionNumberOffset..<revolutionNumberLength]
-        revolutionNumber = Int(revolutionNumberString.trimmingCharacters(in: CharacterSet.whitespaces))!
-        //print("revolutionNumberString \"\(revolutionNumberString)\"")
-        
+        self.revolutionNumber = Int(revolutionNumberString.trimmingCharacters(in: CharacterSet.whitespaces))!
     }
     
     
@@ -186,18 +172,20 @@ class TwoLineElementSet {
         let epochFirstDayOfYear = calendar.date(from: components)
         let epochFirstDayOfYearSecondsSinceReferenceDate = floor((epochFirstDayOfYear?.timeIntervalSinceReferenceDate)!)
         let epochFirstDayOfYearJulianDate = 2451910.5 + epochFirstDayOfYearSecondsSinceReferenceDate / 86400.0
-        
-         return epochFirstDayOfYearJulianDate + self.epochJulianDateFraction - 1.0; // TLE contains julian day of year (therefore first day is day 1 not 0)
+
+        // TLE contains Julian day of year (therefore first day is day 1 not 0)
+        return epochFirstDayOfYearJulianDate + self.epochJulianDateFraction - 1.0;
     }
 
-    
     func meanAnomalyForJulianDate(julianDate: Double) -> Double {
         let epochJulianDate = self.epochAsJulianDate()
         let daysSinceEpoch = julianDate - epochJulianDate
         let revolutionsSinceEpoch = self.meanMotion * daysSinceEpoch
-        let  meanAnomalyForJulianDate = self.meanAnomaly + revolutionsSinceEpoch * 360.0
+        let meanAnomalyForJulianDate = self.meanAnomaly + revolutionsSinceEpoch * 360.0
         let fullRevolutions = floor(meanAnomalyForJulianDate / 360.0)
-        return meanAnomalyForJulianDate - 360.0 * fullRevolutions
+        let adjustedMeanAnomalyForJulianDate = meanAnomalyForJulianDate - 360.0 * fullRevolutions
+        
+        return adjustedMeanAnomalyForJulianDate
     }
     
     

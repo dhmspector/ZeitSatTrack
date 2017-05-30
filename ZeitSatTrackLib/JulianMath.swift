@@ -28,8 +28,15 @@ class JulianMath {
      *
      * @return Current time in seconds since 1/1/1
      */
-    class func secondsSinceReferenceDate() -> Double {
-        return floor(Date().timeIntervalSinceReferenceDate)
+    class func secondsSinceReferenceDate(_ date: Date? = nil) -> Double {
+        var theDate: Date?
+        if date != nil {
+            theDate = date
+        } else {
+            theDate = Date()
+        }
+        let refDate = theDate?.timeIntervalSinceReferenceDate
+        return floor(refDate!)
     }
     
     /**

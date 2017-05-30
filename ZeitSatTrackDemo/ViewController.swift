@@ -17,7 +17,7 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
     
     private var theViewC: MaplyBaseViewController?
     private var vectorDict: [String:AnyObject]?
-    var mapMarkers = Dictionary<String, MaplyMovingScreenMarker>()
+    var mapMarkers = Dictionary<String, MaplyScreenMarker>()
 
     
     override func viewDidLoad() {
@@ -25,13 +25,15 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
         let satGroups = satTracker.satelliteCollections()
         satTracker.delegate = self
         satTracker.location = CLLocation(latitude: 37.780129, longitude: -122.392033)
-        _ = satTracker.loadSatelliteSubGroup(subgroupName: "100 (or so) Brightest", group: "Common Interest")
+        _ = satTracker.loadSatelliteSubGroup(subgroupName:"NOAA", group:  "Weather & Earth Resources Satellites")
+        _ = satTracker.loadSatelliteSubGroup(subgroupName:"GEOS", group:  "Weather & Earth Resources Satellites")
+
         self.setupWhirlyGlobe()
 
         satTracker.trackedSatsByName().forEach { (name) in
             _ = self.satTracker.startObservingSatelliteNamed(name)
         }
-        satTracker.enableContinuousLocationUpdates()
+        _ = satTracker.enableContinuousLocationUpdates()
     }
     
     override func didReceiveMemoryWarning() {
@@ -158,28 +160,23 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
     /// - Parameter location: the MaplyCoordinate (lat/lon) for the marker
     /// - Parameter imageName: the name of am image reasoiurce to load
     /// - Returns: A MaplyMovingScreenMarker or nil if unsuccessful
-    func newMarkerAt(location: CLLocation, iamgeName: String) -> MaplyMovingScreenMarker? {
+    func newMarkerAt(location: CLLocation, iamgeName: String) -> MaplyScreenMarker {
         let maplyLoc = MaplyCoordinateMakeWithDegrees(Float(location.coordinate.longitude), Float(location.coordinate.latitude))
-        let rv = MaplyMovingScreenMarker()
-        rv.image = UIImage(named: "satellite")
-        rv.size = CGSize(width: 32.0, height: 32.0)
-        rv.layoutImportance = MAXFLOAT
-        rv.selectable = false
-        rv.loc = maplyLoc
-        rv.endLoc = maplyLoc
-        return rv
+        let tmpMarker = MaplyScreenMarker()
+        tmpMarker.image = UIImage(named: "satellite")
+        tmpMarker.size = CGSize(width: 32.0, height: 32.0)
+        tmpMarker.layoutImportance = MAXFLOAT
+        tmpMarker.selectable = false
+        tmpMarker.loc = maplyLoc
+        self.theViewC?.addScreenMarkers([tmpMarker], desc: nil)
+        return tmpMarker
     }
     
-    func update(marker:MaplyMovingScreenMarker, location:CLLocation) {
-        let lastLoction = CLLocation(latitude: CLLocationDegrees(marker.endLoc.y), longitude: CLLocationDegrees(marker.endLoc.x))
-        if lastLoction != location {
-            self.theViewC?.removeActiveObjects([marker as Any])
-
-            marker.loc = marker.endLoc
-            marker.endLoc =  MaplyCoordinateMakeWithDegrees(Float(location.coordinate.longitude), Float(location.coordinate.latitude))
-            marker.duration = 0.1
-            self.theViewC?.addScreenMarkers([marker as Any], desc: nil)
-        }
+    func update(marker:MaplyScreenMarker, location:CLLocation) {
+        //self.theViewC?.remove([marker], mode: MaplyThreadMode.current)
+        self.theViewC?.remove([marker])
+        marker.loc =  MaplyCoordinateMakeWithDegrees(Float(location.coordinate.longitude), Float(location.coordinate.latitude))
+        self.theViewC?.addScreenMarkers([marker as Any], desc: nil)
     }
 
     
@@ -190,20 +187,18 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
     func didObserveSatellites(satelliteList: Dictionary<String, GeoCoordinates>) {
         //print("We got: \(satelliteList)")
         satelliteList.forEach { (dict) in
-
             let geoDict = dict.value
             print("\(dict.key) - \(geoDict.description())")
             
-//            let tmpLocation = CLLocation(latitude: geoDict.latitude, longitude: geoDict.longitude)
-//            if let thisMarker = self.mapMarkers[dict.key] {
-//                self.update(marker: thisMarker, location: tmpLocation)
-//                //print("Updated marker for \(dict.key) at \(tmpLocation)")
-//            } else { // no marker - make a new one
-//                let tmpMarker = self.newMarkerAt(location: tmpLocation, iamgeName: kSatelliteMarkerImage)
-//                self.mapMarkers[dict.key] = tmpMarker
-//                self.theViewC?.addScreenMarkers([tmpMarker as Any], desc: nil)
-//                //print("Added marker for \(dict.key) at \(tmpLocation)")
-//            }
+            let tmpLocation = CLLocation(latitude: geoDict.latitude, longitude: geoDict.longitude)
+            if let thisMarker = self.mapMarkers[dict.key] {
+                self.update(marker: thisMarker, location: tmpLocation)
+                //print("Updated marker for \(dict.key) at \(tmpLocation)")
+            } else { // no marker - make a new one
+                let tmpMarker = self.newMarkerAt(location: tmpLocation, iamgeName: kSatelliteMarkerImage)
+                self.mapMarkers[dict.key] = tmpMarker
+                //print("Added marker for \(dict.key) at \(tmpLocation)")
+            }
         }
     }
     
@@ -219,36 +214,3 @@ class ViewController: UIViewController, ZeitSatTrackManagerDelegate {
 
 
 
-/*
- // Do any additional setup after loading the view, typically from a nib.
- let satGroups = satTracker.satelliteCollections()
- 
- 
- 
- //        print("Satellite Groups: \(satGroups)")
- //        let satCollections = satTracker.tleListForGroupNamed(satGroups[1])
- //        print("Satellite list for \(satGroups[1]): \(String(describing: satCollections))")
- //        let tleData = satTracker.tleDataForSatelliteGroup(satGroups[1], subGroupName: satCollections![0]["name"]!)
- //        print("TLE URL: \(String(describing: tleData))")
- satTracker.loadSatelliteCollectionForGroup(name: satGroups[1])
- //        satTracker.loadSatelliteCollectionForGroup(name: satGroups[2])
- //        satTracker.loadSatelliteCollectionForGroup(name: satGroups[3])
- 
- //let subGroups = satTracker.subGroupsForCollection(name:satGroups[2])
- 
- let error = satTracker.loadSatelliteSubGroup(subgroupName: "Radar Calibration", group: "Miscellaneous Satellites")
- print("\(satTracker.stats())")
- //print("Satellite names: \(satTracker.trackedSatsByName())")
- //print("Loctions of all tracked sats: \(satTracker.locationsForSatellites())")
- 
- //satTracker.locationsForSatellites().forEach { (satLocationDict) in
- //    let locString = satLocationDict[satLocationDict.keys.first!]!.description()
- //    print("\(satLocationDict.keys.first!):  \(locString)")
- //}
- 
- let satLoc = satTracker.locationForSatelliteNamed("NOAA 18")
- print("NOAA 18: \(satLoc != nil ?  satLoc!.description() : "NOT FOUND!")")
- let noaa18Added = self.satTracker.startObservingSatelliteNamed("NOAA 18")
- print("NOAA18 added: \(noaa18Added)")
- 
- */
