@@ -117,7 +117,7 @@ Lastly, you can add satellites explicitly by providing a string containing TLE d
 addSatellitesFromTLEData(tleString:String)
 ```
 
-Where the string is one or more stanzas in the [Two-Line Element format](https://en.wikipedia.org/wiki/Two-line_element_set), for example:
+Where the string is one or more stanzas in the [Two-Line Element format](https://en.wikipedia.org/wiki/Two-line_element_set); for example, the the following represents the ZARYA Module which is the center of the International Space Station (ISS):
 
 ```
 ISS (ZARYA)             
@@ -181,22 +181,24 @@ This property is in _seconds_. Setting it to less than 1 second can have adverse
 Once the _ZeitSatTrack_ manager has been initialized and configured with one or more TLE data sets, the satellites can be queried to determine their positions by calling:
 
 ```swift
-locationForSatelliteNamed( _ name: String, targetDate: Date? = nil) -> GeoCoordinates?
+locationForSatelliteNamed( _ name: String, targetDate: Date?) -> GeoCoordinates?
 ```
 
 Which returns the location for a singe named satellite, or
 
 ```swift
-locationsForSatellites(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]
+locationsForSatellites(date: Date?) -> [Dictionary<String, GeoCoordinates>]
 ```
 
 for a dictionary containing info on all known satellites. Or, if a there is a list of satellites being observed, and the _ZeitSatTrackDelegate_ protocol is not being used:
 
 ```swift
-observedSatelliteLocations(date: Date? = nil) -> [Dictionary<String, GeoCoordinates>]?
+observedSatelliteLocations(date: Date?) -> [Dictionary<String, GeoCoordinates>]?
 ```
 
-Both calls returns an array of dictionaries with location info for all satellites known to the manager.
+For all calls the default Date is _now_ if a nil is passed to the call.
+
+Both collection oriented calls return an array of dictionaries with location info for all satellites known to the manager where the key is the satellite name.
 
 ## Observing Multiple Satellites
 
@@ -225,7 +227,7 @@ observedCount
 Lastly, to remove all observed sats, call
 
 ```swift
-stopObservingAllSatellites()
+satTracker.stopObservingAllSatellites()
 ```
 
 ### Position Data
@@ -248,6 +250,7 @@ public struct GeoCoordinates {
 
 ```swift
 let satLoc = satTracker.locationForSatelliteNamed("NOAA 18")
+print(\(satLoc.description))
 ```
 
 Yields a result similar to:
@@ -290,7 +293,21 @@ An additional available mode is the auto-updating mode where the manager will fi
 
 ### ZeitSatTrack Delegate
 
-_ZeitSatTrack_ supports a delegate protocol that will automatically deliver information on observed Satellites.
+_ZeitSatTrack_ supports a delegate protocol that will automatically deliver information on observed Satellites or notify the delegate that one or more satellites are no longer being observed.
+
+```swift
+/// ZeitSatTrack satellite observer did return data
+///
+/// - Parameter satelliteList: A dictionary representing satellite positions
+func didObserveSatellites(satelliteList: Dictionary<String, GeoCoordinates>)
+
+
+/// ZeitSatTrack satellite observer did remove satellites
+///
+/// - Parameter names: an array of satellite names that were removed
+func didRemoveObservedSatellitesNamed(names:[String])
+```
+
 
 # Adding Satellite Data Sources
 
