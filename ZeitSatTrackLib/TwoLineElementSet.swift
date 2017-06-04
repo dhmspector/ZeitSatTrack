@@ -31,7 +31,7 @@ extension String
 class TwoLineElementSet {
 
     // Line 0
-    var nameOfSatellite:        String = ""
+    var nameOfSatellite:         String = ""
     
     // Line 1
     var satcatNumber:            Int = 0                                    // http://en.wikipedia.org/wiki/Satellite_Catalog_Number

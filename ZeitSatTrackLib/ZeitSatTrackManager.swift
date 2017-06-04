@@ -325,6 +325,10 @@ open class ZeitSatTrackManager: NSObject, CLLocationManagerDelegate {
         return self.satellites.first(where: { $0.name == name }) != nil
     }
     
+    /// Find catalog number for named satellite
+    ///
+    /// - Parameter name: satellite name
+    /// - Returns: an int representing NORAD catalog number for the satellite
     open func catalogNumberForSatNamed(_ name:String) -> Int? {
         var rv: Int?
         if let satellite = self.satellites.filter({ satellite in
