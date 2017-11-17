@@ -1,14 +1,19 @@
 //
-//  CelestialBody.swift
-//  ARGlobe
+//  ZeitSatTrackManager.swift
+//  ZeitSatTrack
 //
-//  Created by Ryan Pasecky on 11/11/17.
-//  Copyright © 2017 Ryan Pasecky. All rights reserved.
+//  Created by David Spector on 5/22/17.
+//  Copyright © 2017 Zeitgeist. All rights reserved.
+//
+//  Planetary Calulations written by Ryan Pasecky on 10/12/17.
+//
+// These are all based on the formulas presented in
+// Paul Schlyter's website
+// http://www.stjarnhimlen.se/comp/ppcomp.html#5
 //
 // Check against values here: http://celestialchart.com/ephemeris/
 
 import Foundation
-import SceneKit
 
 public class CelestialBody {
 
@@ -24,8 +29,6 @@ public class CelestialBody {
   public weak var sun: CelestialBody?
   
   fileprivate var calculatedOrbitalParameters: Bool = false
-  
-  public var node: SCNNode?
 
   //Heliocentric coordinates
   var xh: Float!
